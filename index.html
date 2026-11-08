@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Mira — AI replies for Instagram &amp; TikTok shops</title>
+<meta name="description" content="Mira answers your Instagram and TikTok DMs in seconds — prices, stock, orders and delivery — so you stop losing sales while you're busy running the shop." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#f6f8f5; --bg2:#eef2ec; --surface:#ffffff; --surface2:#f0f3ee;
+  --ink:#101613; --muted:#5a665e; --faint:#859187;
+  --line:#dde4dc; --line2:#cbd5cb;
+  --green:#0c6b4e; --green-deep:#084734; --green-soft:#dff2e6;
+  --lime:#cfe86b; --lime-ink:#2a3a12;
+  --coral:#ff5a36; --coral-soft:#ffe9e2;
+  --amber:#ffb224; --amber-soft:#fff3d6;
+  --pink:#e93d82; --shadow:0 18px 44px rgba(16,40,28,.10), 0 2px 8px rgba(16,40,28,.06);
+  --shadow-sm:0 6px 18px rgba(16,40,28,.08);
+  --r-lg:24px; --r-md:16px; --r-sm:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0c100e; --bg2:#101511; --surface:#151b17; --surface2:#1a211c;
+    --ink:#edf3ee; --muted:#a3b1a7; --faint:#7d8c81;
+    --line:#263028; --line2:#334238;
+    --green:#35c48d; --green-deep:#0f2e23; --green-soft:#173528;
+    --lime:#cfe86b; --lime-ink:#22300f;
+    --coral:#ff7a5c; --coral-soft:#3a211a;
+    --amber:#ffb224; --amber-soft:#332a12;
+    --shadow:0 18px 44px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.3);
+    --shadow-sm:0 6px 18px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif; font-size:16.5px; line-height:1.55; -webkit-font-smoothing:antialiased}
+img,svg{display:block}
+a{color:inherit}
+.wrap{max-width:1180px; margin:0 auto; padding:0 22px}
+.mono{font-family:"DM Mono", ui-monospace, monospace}
+h1,h2,h3{line-height:1.08; letter-spacing:-.02em; margin:0}
+h2{font-size:clamp(30px,4.2vw,44px); font-weight:800}
+.lede{color:var(--muted); font-size:18px; max-width:56ch}
+.kicker{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--green)}
+.kicker::before{content:""; width:22px; height:2px; background:var(--green); border-radius:2px}
+section{padding:84px 0}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:700; font-size:15.5px; text-decoration:none; border-radius:999px; padding:13px 24px; border:1.5px solid transparent; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease, background .15s ease; white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--green); color:#fff; box-shadow:0 8px 20px rgba(12,107,78,.28)}
+@media (prefers-color-scheme: dark){ .btn-primary{color:#06231a} }
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent; color:var(--ink); border-color:var(--line2)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-lime{background:var(--lime); color:var(--lime-ink)}
+.btn-sm{padding:9px 18px; font-size:14.5px}
+:focus-visible{outline:3px solid var(--amber); outline-offset:2px; border-radius:6px}
+
+/* ---------- Nav ---------- */
+header{position:sticky; top:0; z-index:60; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
+.nav{display:flex; align-items:center; gap:28px; height:66px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:21px; letter-spacing:-.02em; text-decoration:none}
+.logo-mark{width:34px; height:34px; border-radius:10px; background:var(--green); display:grid; place-items:center; color:#fff; flex:none}
+@media (prefers-color-scheme: dark){ .logo-mark{color:#06231a} }
+.nav-links{display:flex; gap:26px; margin-left:8px}
+.nav-links a{text-decoration:none; font-size:15px; font-weight:600; color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{margin-left:auto; display:flex; align-items:center; gap:10px}
+.menu-btn{display:none; background:none; border:1px solid var(--line2); border-radius:10px; width:42px; height:42px; cursor:pointer; color:var(--ink); align-items:center; justify-content:center}
+.mobile-menu{display:none; border-top:1px solid var(--line); padding:14px 22px 20px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block; padding:10px 0; font-weight:600; text-decoration:none; border-bottom:1px solid var(--line)}
+.mobile-menu a:last-of-type{border-bottom:none}
+
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 30px; overflow:hidden}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:52px; align-items:center}
+.hero h1{font-size:clamp(40px,5.6vw,62px); font-weight:800}
+.hero h1 .hl{background:linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 94%, transparent 94%); padding:0 4px; color:inherit}
+.hero .lede{margin:20px 0 8px}
+.hero-points{list-style:none; margin:18px 0 26px; padding:0; display:grid; gap:10px}
+.hero-points li{display:flex; gap:10px; align-items:flex-start; font-weight:600; font-size:15.5px}
+.hero-points .tick{flex:none; width:22px; height:22px; border-radius:50%; background:var(--green-soft); color:var(--green); display:grid; place-items:center; margin-top:1px}
+.hero-cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+.hero-note{font-size:13.5px; color:var(--faint); margin-top:12px}
+.platforms{display:flex; gap:8px; flex-wrap:wrap; margin-top:26px}
+.chip{display:inline-flex; align-items:center; gap:7px; font-size:13.5px; font-weight:700; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:7px 13px}
+.chip .dot{width:8px; height:8px; border-radius:50%}
+
+/* Phone mock */
+.stage{position:relative; max-width:430px; margin:0 auto; width:100%}
+.phone{background:var(--surface); border:1.5px solid var(--line2); border-radius:36px; box-shadow:var(--shadow); overflow:hidden}
+.phone-top{display:flex; align-items:center; gap:11px; padding:16px 18px 12px; border-bottom:1px solid var(--line)}
+.avatar{width:40px; height:40px; border-radius:50%; flex:none; display:grid; place-items:center; font-weight:800; color:#fff; font-size:14px}
+.phone-top .who{line-height:1.25}
+.phone-top .who b{font-size:15px}
+.phone-top .who span{display:block; font-size:12px; color:var(--green); font-weight:600}
+.icon-btn{margin-left:auto; color:var(--faint); display:flex; gap:14px}
+.chat{padding:16px 16px 8px; display:grid; gap:9px; min-height:342px; align-content:start}
+.bubble{max-width:82%; padding:10px 13px; border-radius:18px; font-size:14.5px; line-height:1.45}
+.bubble.in{background:var(--surface2); border-bottom-left-radius:6px; justify-self:start}
+.bubble.out{background:var(--green); color:#fff; border-bottom-right-radius:6px; justify-self:end}
+@media (prefers-color-scheme: dark){ .bubble.out{color:#06231a} }
+.bubble .time{display:block; font-size:11px; opacity:.65; margin-top:4px; font-weight:500}
+.order-card{justify-self:end; width:82%; background:var(--surface); border:1.5px solid var(--green); border-radius:16px; padding:12px 14px; font-size:13.5px}
+.order-card b{font-size:14px}
+.order-row{display:flex; justify-content:space-between; gap:10px; padding:3px 0; color:var(--muted)}
+.order-row b{color:var(--ink)}
+.pay-btn{margin-top:8px; background:var(--green); color:#fff; text-align:center; font-weight:700; border-radius:10px; padding:8px; font-size:13.5px}
+@media (prefers-color-scheme: dark){ .pay-btn{color:#06231a} }
+.typing{justify-self:start; background:var(--surface2); border-radius:18px; border-bottom-left-radius:6px; padding:12px 16px; display:none; gap:5px}
+.typing.on{display:flex}
+.typing i{width:7px; height:7px; border-radius:50%; background:var(--faint); animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+.chat-input{display:flex; align-items:center; gap:10px; margin:10px 14px 16px; border:1px solid var(--line); border-radius:999px; padding:9px 9px 9px 16px; color:var(--faint); font-size:14px}
+.chat-input .send{margin-left:auto; width:32px; height:32px; border-radius:50%; background:var(--green); color:#fff; display:grid; place-items:center; flex:none}
+@media (prefers-color-scheme: dark){ .chat-input .send{color:#06231a} }
+.float-card{position:absolute; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-sm); padding:11px 14px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:3}
+.float-card b{display:block; font-size:13.5px}
+.float-card span{color:var(--muted)}
+.fc-icon{width:34px; height:34px; border-radius:10px; display:grid; place-items:center; flex:none}
+.fc-1{top:-22px; right:18px}
+.fc-2{bottom:120px; right:-58px}
+.fc-3{bottom:-18px; left:-30px}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.float-card{animation:floaty 5s ease-in-out infinite}
+.fc-2{animation-delay:1.2s}.fc-3{animation-delay:2.1s}
+
+/* strip */
+.strip{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface); padding:22px 0}
+.strip-in{display:flex; align-items:center; gap:14px 34px; flex-wrap:wrap; justify-content:center}
+.strip p{margin:0; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint)}
+.strip .shop{font-weight:800; font-size:16px; color:var(--muted); display:flex; align-items:center; gap:8px}
+
+/* ---------- Pain ---------- */
+.pain-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start}
+.pain-list{display:grid; gap:14px; margin-top:8px}
+.pain-item{display:flex; gap:16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:20px}
+.pain-item .n{flex:none; width:38px; height:38px; border-radius:12px; background:var(--coral-soft); color:var(--coral); display:grid; place-items:center; font-weight:800}
+.pain-item h3{font-size:17.5px; margin-bottom:4px}
+.pain-item p{margin:0; color:var(--muted); font-size:15px}
+.unread{background:var(--ink); color:var(--bg); border-radius:var(--r-lg); padding:26px; position:sticky; top:92px}
+@media (prefers-color-scheme: dark){ .unread{background:#e9efe9; color:#101613} }
+.unread h3{font-size:20px; margin-bottom:6px}
+.unread p{opacity:.75; margin:0 0 18px; font-size:15px}
+.unread-row{display:flex; align-items:center; gap:12px; padding:12px 0; border-top:1px solid color-mix(in srgb, currentColor 16%, transparent)}
+.unread-row .avatar{width:36px; height:36px; font-size:12px}
+.unread-row .msg{min-width:0}
+.unread-row .msg b{font-size:14.5px; display:block}
+.unread-row .msg span{font-size:13px; opacity:.65; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.badge{margin-left:auto; flex:none; background:var(--coral); color:#fff; font-size:11.5px; font-weight:800; border-radius:999px; min-width:22px; height:22px; display:grid; place-items:center; padding:0 6px}
+.unread .when{margin-left:auto; font-size:12px; opacity:.55; flex:none}
+
+/* ---------- Demo ---------- */
+.demo{background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.demo-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:52px; align-items:start}
+.scenarios{display:grid; gap:10px; margin-top:26px}
+.scenario{text-align:left; background:var(--surface); border:1.5px solid var(--line); border-radius:var(--r-md); padding:16px 18px; cursor:pointer; font:inherit; color:var(--ink); display:flex; gap:14px; align-items:center; width:100%}
+.scenario:hover{border-color:var(--line2)}
+.scenario.active{border-color:var(--green); box-shadow:var(--shadow-sm)}
+.scenario .q{font-weight:700; font-size:15.5px}
+.scenario .tag{font-size:12px; font-weight:700; color:var(--green); background:var(--green-soft); border-radius:999px; padding:3px 9px; margin-left:auto; flex:none}
+.demo-panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow); overflow:hidden}
+.demo-head{display:flex; align-items:center; gap:10px; padding:14px 18px; border-bottom:1px solid var(--line); font-weight:700; font-size:14.5px}
+.demo-head .live{margin-left:auto; display:inline-flex; gap:6px; align-items:center; font-size:12px; color:var(--green); font-weight:700}
+.demo-head .live::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--green)}
+.demo-chat{padding:18px; display:grid; gap:9px; min-height:330px; align-content:start}
+.demo-meta{border-top:1px solid var(--line); padding:13px 18px; display:flex; gap:8px; flex-wrap:wrap; background:var(--surface2)}
+.meta-pill{font-size:12.5px; font-weight:700; border-radius:999px; padding:5px 11px; background:var(--surface); border:1px solid var(--line); display:inline-flex; gap:6px; align-items:center}
+.replay{margin-top:14px}
+
+/* ---------- Steps ---------- */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:44px}
+.step{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:28px}
+.step .step-n{font-family:"DM Mono",monospace; font-size:13px; font-weight:500; color:var(--green); background:var(--green-soft); display:inline-block; padding:5px 11px; border-radius:999px; margin-bottom:16px}
+.step h3{font-size:20px; margin-bottom:8px}
+.step p{margin:0; color:var(--muted); font-size:15px}
+.step .mini{margin-top:16px; display:flex; gap:6px; flex-wrap:wrap}
+.step .mini span{font-size:12.5px; font-weight:700; border:1px solid var(--line); border-radius:999px; padding:4px 10px; color:var(--muted)}
+
+/* ---------- Features ---------- */
+.feat-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px; margin-top:44px}
+.feat{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:26px}
+.feat h3{font-size:18.5px; margin:12px 0 6px}
+.feat p{margin:0; color:var(--muted); font-size:15px}
+.feat .f-icon{width:42px; height:42px; border-radius:12px; display:grid; place-items:center}
+.f-wide{grid-column:span 7}.f-narrow{grid-column:span 5}.f-third{grid-column:span 4}
+.stock-rows{margin-top:16px; display:grid; gap:8px}
+.stock-row{display:flex; align-items:center; gap:10px; font-size:13.5px; font-weight:600; background:var(--surface2); border-radius:10px; padding:9px 12px}
+.stock-row .st{margin-left:auto; font-size:12px; font-weight:800; border-radius:999px; padding:3px 9px}
+.st-in{background:var(--green-soft); color:var(--green)}
+.st-low{background:var(--amber-soft); color:#8a5b00}
+@media (prefers-color-scheme: dark){ .st-low{color:var(--amber)} }
+.st-out{background:var(--coral-soft); color:var(--coral)}
+.tone-rows{margin-top:16px; display:grid; gap:8px; font-size:14px}
+.tone-rows .bubble{max-width:100%}
+
+/* ---------- Calculator ---------- */
+.calc{background:var(--green-deep); color:#eaf5ee; border-radius:28px; padding:clamp(26px,4vw,48px); display:grid; grid-template-columns:1.05fr .95fr; gap:44px}
+@media (prefers-color-scheme: dark){ .calc{background:#122019; border:1px solid var(--line)} }
+.calc h2{color:#fff}
+.calc .lede{color:#bcd6c6}
+.calc label{display:block; font-weight:700; font-size:14.5px; margin:22px 0 8px; color:#fff}
+.calc label output{float:right; font-family:"DM Mono",monospace; color:var(--lime); font-weight:500}
+.calc input[type=range]{width:100%; accent-color:var(--lime); height:28px; cursor:pointer}
+.calc-out{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:26px; align-self:start}
+.calc-out .big{font-size:clamp(38px,4vw,50px); font-weight:800; letter-spacing:-.02em; color:#fff; line-height:1.05}
+.calc-out .big small{font-size:16px; font-weight:600; color:#bcd6c6; letter-spacing:0}
+.calc-stats{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px}
+.calc-stat{background:rgba(255,255,255,.05); border-radius:14px; padding:14px}
+.calc-stat b{display:block; font-size:22px; color:#fff}
+.calc-stat span{font-size:12.5px; color:#bcd6c6; font-weight:600}
+.calc-note{font-size:12.5px; color:#93b3a1; margin-top:16px}
+
+/* ---------- Control ---------- */
+.control-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
+.control-list{list-style:none; padding:0; margin:24px 0 0; display:grid; gap:16px}
+.control-list li{display:flex; gap:13px}
+.control-list .tick{flex:none; width:24px; height:24px; border-radius:50%; background:var(--green-soft); color:var(--green); display:grid; place-items:center; margin-top:2px}
+.control-list b{display:block; font-size:16px}
+.control-list span{color:var(--muted); font-size:15px}
+.handoff{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow); overflow:hidden}
+.handoff-head{padding:16px 20px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:10px; font-weight:800}
+.handoff-body{padding:18px 20px; display:grid; gap:10px}
+.alert-card{border:1.5px solid var(--amber); background:var(--amber-soft); border-radius:14px; padding:14px 16px; font-size:14.5px}
+@media (prefers-color-scheme: dark){ .alert-card{color:var(--ink)} }
+.alert-card b{display:block; margin-bottom:2px}
+.handoff .bubble{max-width:92%}
+.handoff-actions{display:flex; gap:8px; padding:0 20px 20px}
+.handoff-actions span{font-size:13px; font-weight:700; border-radius:999px; padding:8px 14px; border:1px solid var(--line2)}
+.handoff-actions span:first-child{background:var(--green); color:#fff; border-color:var(--green)}
+@media (prefers-color-scheme: dark){ .handoff-actions span:first-child{color:#06231a} }
+
+/* ---------- Pricing ---------- */
+.toggle{display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:999px; padding:4px; gap:4px}
+.toggle button{border:none; background:transparent; font:inherit; font-weight:700; font-size:14px; padding:8px 18px; border-radius:999px; cursor:pointer; color:var(--muted)}
+.toggle button.active{background:var(--surface); color:var(--ink); box-shadow:var(--shadow-sm)}
+.toggle .save{color:var(--green); font-size:12px}
+.prices{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:36px; align-items:stretch}
+.price-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:30px; display:flex; flex-direction:column}
+.price-card.pop{border:2px solid var(--green); position:relative; box-shadow:var(--shadow)}
+.pop-tag{position:absolute; top:-14px; left:26px; background:var(--green); color:#fff; font-size:12px; font-weight:800; letter-spacing:.05em; padding:5px 12px; border-radius:999px}
+@media (prefers-color-scheme: dark){ .pop-tag{color:#06231a} }
+.price-card h3{font-size:19px}
+.price-card .for{color:var(--muted); font-size:14.5px; margin:4px 0 18px}
+.amount{font-size:44px; font-weight:800; letter-spacing:-.03em; line-height:1}
+.amount small{font-size:15px; font-weight:600; color:var(--muted); letter-spacing:0}
+.price-card ul{list-style:none; padding:0; margin:22px 0 26px; display:grid; gap:11px; flex:1}
+.price-card li{display:flex; gap:9px; font-size:14.5px; font-weight:500}
+.price-card li svg{flex:none; margin-top:3px; color:var(--green)}
+.price-card li.off{color:var(--faint)}
+.price-card li.off svg{color:var(--faint)}
+
+/* ---------- Testimonials ---------- */
+.testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:44px}
+.testi{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:26px; display:flex; flex-direction:column; gap:16px}
+.testi blockquote{margin:0; font-size:16.5px; font-weight:600; line-height:1.5}
+.testi .who{display:flex; gap:11px; align-items:center; margin-top:auto}
+.testi .who b{display:block; font-size:14.5px}
+.testi .who span{font-size:13px; color:var(--muted)}
+.stars{color:var(--amber); display:flex; gap:2px}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:780px; margin:40px auto 0}
+.faq-item{border:1px solid var(--line); background:var(--surface); border-radius:var(--r-md); margin-bottom:10px; overflow:hidden}
+.faq-q{width:100%; text-align:left; background:none; border:none; font:inherit; font-weight:700; font-size:16.5px; padding:19px 22px; cursor:pointer; display:flex; align-items:center; gap:12px; color:var(--ink)}
+.faq-q .chev{margin-left:auto; flex:none; transition:transform .2s ease; color:var(--faint)}
+.faq-item.open .chev{transform:rotate(180deg)}
+.faq-a{display:none; padding:0 22px 20px; color:var(--muted); font-size:15.5px}
+.faq-item.open .faq-a{display:block}
+.faq-a p{margin:0}
+
+/* ---------- Contact ---------- */
+.contact-card{background:var(--surface); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); overflow:hidden; display:grid; grid-template-columns:1.05fr .95fr}
+.contact-left{padding:clamp(28px,4vw,44px)}
+.contact-right{background:var(--surface2); border-left:1px solid var(--line); padding:clamp(28px,4vw,44px); display:flex; flex-direction:column; gap:14px}
+.contact-person{display:flex; gap:16px; align-items:center}
+.contact-avatar{width:64px; height:64px; border-radius:50%; background:var(--green); color:#fff; display:grid; place-items:center; font-weight:800; font-size:22px; letter-spacing:-.02em; flex:none}
+@media (prefers-color-scheme: dark){ .contact-avatar{color:#06231a} }
+.contact-person b{font-size:22px; letter-spacing:-.02em; display:block; line-height:1.1}
+.contact-person span{color:var(--muted); font-size:14.5px; font-weight:600}
+.contact-bio{color:var(--muted); font-size:16px; line-height:1.65; margin:18px 0 0}
+.contact-bio strong{color:var(--ink)}
+.employer-logos{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+.employer{display:inline-flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:10px 14px; font-weight:800; font-size:15px}
+.employer small{display:block; font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); line-height:1}
+.contact-linkedin{display:inline-flex; align-items:center; gap:10px; margin-top:22px; background:#0a66c2; color:#fff; text-decoration:none; font-weight:700; font-size:15px; padding:12px 20px; border-radius:999px}
+.contact-linkedin:hover{opacity:.92}
+.contact-label{font-size:12.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--green); margin:0}
+.wa-card{display:flex; align-items:center; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px 18px; text-decoration:none; transition:border-color .15s ease, transform .15s ease}
+.wa-card:hover{border-color:#25d366; transform:translateY(-1px)}
+.wa-icon{width:44px; height:44px; border-radius:50%; background:#25d366; color:#fff; display:grid; place-items:center; flex:none}
+.wa-card b{display:block; font-size:16.5px; letter-spacing:-.01em}
+.wa-card span{font-size:13.5px; color:var(--muted); font-weight:600}
+.wa-arrow{margin-left:auto; color:var(--faint); flex:none}
+.li-card{display:flex; align-items:center; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px 18px; text-decoration:none; transition:border-color .15s ease}
+.li-card:hover{border-color:#0a66c2}
+.li-icon{width:44px; height:44px; border-radius:12px; background:#0a66c2; color:#fff; display:grid; place-items:center; flex:none; font-weight:800; font-size:18px}
+.contact-note{font-size:13.5px; color:var(--muted); line-height:1.55; margin:2px 0 0}
+@media (max-width:900px){ .contact-card{grid-template-columns:1fr} .contact-right{border-left:none; border-top:1px solid var(--line)} }
+
+/* ---------- Final CTA / footer ---------- */
+.final{background:var(--ink); color:var(--bg); border-radius:28px; padding:clamp(34px,5vw,60px); text-align:center}
+@media (prefers-color-scheme: dark){ .final{background:#e9efe9; color:#101613} }
+.final h2{max-width:22ch; margin:0 auto 14px}
+.final p{opacity:.72; max-width:52ch; margin:0 auto 26px}
+.final .hero-note{color:inherit; opacity:.6}
+footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
+.foot{display:flex; gap:28px; flex-wrap:wrap; align-items:flex-start}
+.foot nav{display:flex; gap:22px; flex-wrap:wrap; margin-left:auto}
+.foot a{text-decoration:none; font-weight:600}
+.foot a:hover{color:var(--ink)}
+.center{text-align:center}
+.center .kicker::after{content:""; width:22px; height:2px; background:var(--green); border-radius:2px}
+.center .lede{margin-left:auto; margin-right:auto}
+
+@media (max-width:1020px){
+  .fc-2{right:-8px}.fc-3{left:6px}
+}
+@media (max-width:900px){
+  section{padding:60px 0}
+  .hero-grid,.pain-grid,.demo-grid,.control-grid,.calc{grid-template-columns:1fr}
+  .steps,.prices,.testi-grid{grid-template-columns:1fr}
+  .f-wide,.f-narrow,.f-third{grid-column:span 12}
+  .nav-links{display:none}
+  .menu-btn{display:inline-flex}
+  .nav-cta .btn-ghost{display:none}
+  .unread{position:static}
+  .hero{padding-top:42px}
+  .stage{margin-top:10px}
+  .fc-2{bottom:auto; top:210px}
+}
+@media (max-width:480px){
+  .float-card{padding:9px 11px; font-size:12px}
+  .fc-1{top:-16px; right:8px}.fc-3{display:none}
+  .hero-cta .btn{flex:1}
+  .calc-stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Mira home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M8.5 10.5h7M8.5 13.5h4"/></svg>
+      </span>
+      Mira
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#demo">Live demo</a>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact us</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="#pricing">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="#get-started">Start free</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#demo">Live demo</a>
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact us</a>
+    <a href="#get-started" style="color:var(--green)">Start free →</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">For Instagram &amp; TikTok shops</span>
+        <h1 style="margin-top:14px">Your DMs are full. <span class="hl">Your sales shouldn’t wait.</span></h1>
+        <p class="lede">Mira is an AI teammate that answers customer messages in seconds — prices, sizes, stock, delivery, order status — in your voice, on Instagram, TikTok and WhatsApp. You stop copy-pasting the same replies. Customers stop leaving.</p>
+        <ul class="hero-points">
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Replies in under 10 seconds, 24/7 — even at 1am after a video goes viral</li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Knows your live inventory, so it never sells something that’s sold out</li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Sends the checkout link and creates the order — you just pack and ship</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#get-started">Start free — no card needed</a>
+          <a class="btn btn-ghost" href="#demo">See it answer ↓</a>
+        </div>
+        <p class="hero-note">Free 14-day trial · Set up in about 10 minutes · Cancel anytime</p>
+        <div class="platforms" aria-label="Works with">
+          <span class="chip"><span class="dot" style="background:var(--pink)"></span>Instagram DMs</span>
+          <span class="chip"><span class="dot" style="background:var(--ink)"></span>TikTok messages</span>
+          <span class="chip"><span class="dot" style="background:#25d366"></span>WhatsApp</span>
+          <span class="chip"><span class="dot" style="background:var(--green)"></span>Shopify</span>
+          <span class="chip"><span class="dot" style="background:var(--amber)"></span>Etsy</span>
+        </div>
+      </div>
+
+      <div class="stage" aria-label="Example conversation: Mira answering a customer on Instagram">
+        <div class="float-card fc-1">
+          <span class="fc-icon" style="background:var(--green-soft); color:var(--green)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><b>Replied in 8 seconds</b><span>Customer waited 3 hrs before</span></div>
+        </div>
+        <div class="float-card fc-2">
+          <span class="fc-icon" style="background:var(--amber-soft); color:#8a5b00"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+          <div><b>Stock synced</b><span>Serum: 5 left after this order</span></div>
+        </div>
+        <div class="float-card fc-3">
+          <span class="fc-icon" style="background:var(--coral-soft); color:var(--coral)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7L5 3H2"/><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></span>
+          <div><b>Order #1042 created</b><span>$36.95 · Paid via link</span></div>
+        </div>
+
+        <div class="phone">
+          <div class="phone-top">
+            <span class="avatar" style="background:linear-gradient(135deg,#e93d82,#ff8a5c)">GS</span>
+            <div class="who"><b>glowby.sana</b><span>● Active now · Instagram</span></div>
+            <span class="icon-btn" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.25a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </span>
+          </div>
+          <div class="chat" id="heroChat">
+            <div class="bubble in">Hi! Is the vitamin C serum still in stock? And how much with shipping to Austin? <span class="time">11:42 PM</span></div>
+            <div class="bubble out">Hey love! Yes — we have 6 left 💛 It’s $32 + $4.95 shipping to Austin, arrives in 2–3 days. Want me to reserve one for you? <span class="time">11:42 PM · Mira replied</span></div>
+            <div class="bubble in">Yes please! 🙏</div>
+            <div class="order-card">
+              <b>Order reserved — GlowBySana</b>
+              <div class="order-row"><span>Vitamin C Serum × 1</span><b>$32.00</b></div>
+              <div class="order-row"><span>Shipping to Austin, TX</span><b>$4.95</b></div>
+              <div class="order-row"><span>Total</span><b>$36.95</b></div>
+              <div class="pay-btn">Tap to pay securely →</div>
+            </div>
+            <div class="bubble in">Paid! Thank you, that was so fast 😭✨</div>
+            <div class="bubble out">You’re in! Order #1042 confirmed — tracking lands in your DMs tomorrow morning. Thank you for shopping small 🤍</div>
+          </div>
+          <div class="chat-input">Message… <span class="send"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="wrap strip-in">
+      <p>Made for shops like yours</p>
+      <span class="shop">🧴 Skincare &amp; beauty</span>
+      <span class="shop">👗 Boutiques &amp; thrift</span>
+      <span class="shop">🧁 Bakeries &amp; food</span>
+      <span class="shop">👟 Sneaker resellers</span>
+      <span class="shop">🕯️ Handmade &amp; candles</span>
+      <span class="shop">💍 Jewelry</span>
+    </div>
+  </div>
+
+  <!-- PAIN -->
+  <section id="pain">
+    <div class="wrap pain-grid">
+      <div>
+        <span class="kicker">The problem</span>
+        <h2 style="margin:12px 0 14px">Every unanswered DM is a customer buying from someone else</h2>
+        <p class="lede" style="margin-bottom:30px">You didn’t start a shop to be a full-time inbox. But the questions never stop — and they’re all the same questions.</p>
+        <div class="pain-list">
+          <div class="pain-item">
+            <span class="n">1</span>
+            <div><h3>“Price?” “Available?” “Delivery to…?” — 100 times a day</h3>
+            <p>The same five questions eat your mornings, your packing time, and your evenings with family. Copy, paste, copy, paste.</p></div>
+          </div>
+          <div class="pain-item">
+            <span class="n">2</span>
+            <div><h3>By the time you reply, they’ve gone cold</h3>
+            <p>A customer who messaged at lunch and hears back at 9pm has already ordered from the shop that answered in a minute.</p></div>
+          </div>
+          <div class="pain-item">
+            <span class="n">3</span>
+            <div><h3>One viral video = 400 DMs you can’t get through</h3>
+            <p>Your best marketing moment becomes your worst week. The algorithm rewards you; your inbox punishes you.</p></div>
+          </div>
+          <div class="pain-item">
+            <span class="n">4</span>
+            <div><h3>You sell things you don’t have — or miss what you do</h3>
+            <p>Answering from memory means promising sold-out stock, refunding angry customers, and losing the sale either way.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="unread" aria-label="Illustration of an overwhelmed inbox">
+        <h3>A Tuesday in your inbox, right now</h3>
+        <p>Unread, stacking up while you’re at the post office.</p>
+        <div class="unread-row"><span class="avatar" style="background:#7c5cd6">M</span><div class="msg"><b>maya.wears</b><span>is the blue dress available in S??</span></div><span class="when">9:14 AM</span><span class="badge">3</span></div>
+        <div class="unread-row"><span class="avatar" style="background:#0ea5a4">J</span><div class="msg"><b>jordan.kicks</b><span>yo how much for the Jordan 4s size 10</span></div><span class="when">10:02 AM</span><span class="badge">2</span></div>
+        <div class="unread-row"><span class="avatar" style="background:#e93d82">A</span><div class="msg"><b>ana.bakes</b><span>can I order a cake for Saturday?? need it by—</span></div><span class="when">11:47 AM</span><span class="badge">5</span></div>
+        <div class="unread-row"><span class="avatar" style="background:#f59e0b">R</span><div class="msg"><b>rachel.rn</b><span>where is my order from last week 😕</span></div><span class="when">1:20 PM</span><span class="badge">4</span></div>
+        <div class="unread-row"><span class="avatar" style="background:#3b82c4">T</span><div class="msg"><b>tina.tran</b><span>do you ship to Canada? price in CAD?</span></div><span class="when">2:05 PM</span><span class="badge">2</span></div>
+        <div class="unread-row" style="border-bottom:none"><span class="avatar" style="background:var(--coral)">+38</span><div class="msg"><b>38 more conversations</b><span>still waiting on a first reply…</span></div><span class="badge">38</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section class="demo" id="demo">
+    <div class="wrap demo-grid">
+      <div>
+        <span class="kicker">Try it</span>
+        <h2 style="margin:12px 0 14px">Watch Mira handle the questions you’re tired of typing</h2>
+        <p class="lede">Pick a real customer question. This is exactly how Mira answers — using your catalog, your prices and your policies.</p>
+        <div class="scenarios" role="tablist" aria-label="Demo scenarios">
+          <button class="scenario active" data-scenario="stock" role="tab" aria-selected="true"><span class="q">“Is this still available in my size?”</span><span class="tag">STOCK</span></button>
+          <button class="scenario" data-scenario="price" role="tab" aria-selected="false"><span class="q">“How much + shipping to my city?”</span><span class="tag">PRICE</span></button>
+          <button class="scenario" data-scenario="order" role="tab" aria-selected="false"><span class="q">“Where is my order?”</span><span class="tag">TRACKING</span></button>
+          <button class="scenario" data-scenario="custom" role="tab" aria-selected="false"><span class="q">“Can you make a custom one for Saturday?”</span><span class="tag">CUSTOM</span></button>
+          <button class="scenario" data-scenario="human" role="tab" aria-selected="false"><span class="q">“I’m unhappy, I want to talk to a person”</span><span class="tag">HANDOFF</span></button>
+        </div>
+        <button class="btn btn-ghost btn-sm replay" id="replayBtn">↻ Replay this conversation</button>
+      </div>
+      <div class="demo-panel">
+        <div class="demo-head">
+          <span class="avatar" style="background:linear-gradient(135deg,#0c6b4e,#35c48d); width:32px; height:32px; font-size:11px">YK</span>
+          yourshop · Instagram DM
+          <span class="live">MIRA IS ON</span>
+        </div>
+        <div class="demo-chat" id="demoChat" aria-live="polite"></div>
+        <div class="demo-meta" id="demoMeta"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how">
+    <div class="wrap">
+      <span class="kicker">How it works</span>
+      <h2 style="margin:12px 0 14px; max-width:20ch">Live before your next post goes up</h2>
+      <p class="lede">No code, no new app for your customers. Mira works inside the inboxes you already use.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-n">STEP 01</span>
+          <h3>Connect your accounts</h3>
+          <p>Link Instagram, TikTok and WhatsApp in a few clicks with official sign-in. Nothing changes for your followers — they just get answered faster.</p>
+          <div class="mini"><span>Instagram</span><span>TikTok</span><span>WhatsApp</span></div>
+        </div>
+        <div class="step">
+          <span class="step-n">STEP 02</span>
+          <h3>Teach it your shop — once</h3>
+          <p>Connect Shopify or upload your price list. Add delivery areas, return policy, opening hours and how you like to talk. Mira learns it all in minutes, and stock stays synced automatically.</p>
+          <div class="mini"><span>Catalog</span><span>Prices</span><span>Policies</span><span>Your tone</span></div>
+        </div>
+        <div class="step">
+          <span class="step-n">STEP 03</span>
+          <h3>It replies, sells, and taps you in when needed</h3>
+          <p>Mira answers instantly, sends payment links, creates orders and updates customers on delivery. Anything sensitive — refunds, complaints, big custom jobs — lands in your phone with a summary, ready for you.</p>
+          <div class="mini"><span>Payment links</span><span>Orders</span><span>Smart handoff</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" style="padding-top:10px">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">What Mira does</span>
+        <h2 style="margin:12px 0 14px">Built for how social shops actually sell</h2>
+        <p class="lede">Not a generic chatbot. Mira is trained on the daily reality of DM selling.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat f-wide">
+          <span class="f-icon" style="background:var(--green-soft); color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+          <h3>Answers from your live inventory — not from memory</h3>
+          <p>Mira checks real stock before it promises anything. Sold out in Large? It offers the Medium, the waitlist, or the closest match — instead of a refund and an angry comment later.</p>
+          <div class="stock-rows">
+            <div class="stock-row">Linen Dress — Blue, S <span class="st st-in">12 in stock</span></div>
+            <div class="stock-row">Linen Dress — Blue, M <span class="st st-low">Only 2 left</span></div>
+            <div class="stock-row">Linen Dress — Blue, L <span class="st st-out">Sold out → offers waitlist</span></div>
+          </div>
+        </div>
+        <div class="feat f-narrow">
+          <span class="f-icon" style="background:var(--coral-soft); color:var(--coral)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 10h-6.5L13 2z"/></svg></span>
+          <h3>Replies in seconds, at 2pm or 2am</h3>
+          <p>The first shop to answer usually gets the sale. Mira answers every first message in under 10 seconds — nights, weekends, and mid–viral spike included.</p>
+        </div>
+        <div class="feat f-third">
+          <span class="f-icon" style="background:var(--amber-soft); color:#8a5b00"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <h3>Takes the order, sends the payment link</h3>
+          <p>No more “send screenshot after payment.” Mira confirms size, address and total, sends a secure checkout link, and creates the order in Shopify when it’s paid.</p>
+        </div>
+        <div class="feat f-third">
+          <span class="f-icon" style="background:var(--green-soft); color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span>
+          <h3>Speaks your customers’ language</h3>
+          <p>English, Spanish, Nepali, Hindi and 30+ more — Mira replies in the language the customer wrote in, slang and all, without you hiring anyone.</p>
+        </div>
+        <div class="feat f-third">
+          <span class="f-icon" style="background:var(--surface2); color:var(--ink)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+          <h3>Sounds like you, not a robot</h3>
+          <p>Set your tone once — friendly, formal, playful, emoji or no emoji — and review example replies before Mira ever goes live.</p>
+          <div class="tone-rows">
+            <div class="bubble out" style="justify-self:stretch">heyy! yes we’ve got it in black too 🖤 want me to hold one till Friday?</div>
+          </div>
+        </div>
+        <div class="feat f-wide">
+          <span class="f-icon" style="background:var(--surface2); color:var(--ink)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3>Handles comments too — and hides the spam</h3>
+          <p>“Price??” under a post gets a public reply and a DM with the details, turning browsers into buyers. Spam, scams and abusive comments are quietly hidden so your page stays clean.</p>
+        </div>
+        <div class="feat f-narrow">
+          <span class="f-icon" style="background:var(--green-soft); color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>
+          <h3>See what customers actually ask</h3>
+          <p>A weekly summary shows your most-asked products, the questions Mira couldn’t answer, and the stock people wanted but you didn’t have — so your next restock is obvious.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <div class="calc">
+        <div>
+          <span class="kicker" style="color:var(--lime)">Do the math</span>
+          <h2 style="margin:12px 0 12px">What is a slow inbox costing you?</h2>
+          <p class="lede">Drag the sliders to match your shop. Most owners are surprised by the hours — and the orders — hiding in their DMs.</p>
+          <label for="calcMsgs">Customer messages per day <output id="outMsgs">60</output></label>
+          <input type="range" id="calcMsgs" min="10" max="400" step="10" value="60" />
+          <label for="calcMins">Minutes you spend per conversation <output id="outMins">4 min</output></label>
+          <input type="range" id="calcMins" min="1" max="12" step="1" value="4" />
+          <label for="calcValue">Your average order value <output id="outValue">$45</output></label>
+          <input type="range" id="calcValue" min="15" max="250" step="5" value="45" />
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <div class="big"><span id="calcHours">120</span> hours <small>back every month</small></div>
+          <p style="color:#bcd6c6; margin:10px 0 0; font-size:15px">That’s time currently spent typing the same answers — time Mira gives you back for products, content and actual life.</p>
+          <div class="calc-stats">
+            <div class="calc-stat"><b id="calcConvos">1,800</b><span>conversations handled / month</span></div>
+            <div class="calc-stat"><b id="calcSales">$0</b><span>est. recovered sales / month*</span></div>
+            <div class="calc-stat"><b>&lt; 10 sec</b><span>first reply, day or night</span></div>
+            <div class="calc-stat"><b>24 / 7</b><span>coverage, no days off</span></div>
+          </div>
+          <p class="calc-note">*Estimate only: assumes 8% of conversations that would have gone cold instead buy at your average order value when answered instantly. Your results will vary — that’s what the free trial is for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROL / HANDOFF -->
+  <section id="control" style="padding-top:16px">
+    <div class="wrap control-grid">
+      <div class="handoff" aria-label="Example of Mira handing a conversation to the owner">
+        <div class="handoff-head">
+          <span class="fc-icon" style="background:var(--amber-soft); color:#8a5b00"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
+          Needs you — 1 conversation
+        </div>
+        <div class="handoff-body">
+          <div class="bubble in">The shoes arrived with a scratch 😞 I really wanted these for Friday</div>
+          <div class="alert-card"><b>Mira paused and handed this to you</b>Customer is upset about a damaged item. Mira did not offer a refund or discount — that’s your call. Suggested reply is drafted below.</div>
+          <div class="bubble out">I’m so sorry they arrived like that! I can send a replacement pair today, or refund you in full — whichever you prefer. — drafted by Mira, waiting for your tap</div>
+        </div>
+        <div class="handoff-actions"><span>✓ Send as-is</span><span>Edit first</span><span>Take over chat</span></div>
+      </div>
+      <div>
+        <span class="kicker">Trust &amp; control</span>
+        <h2 style="margin:12px 0 14px">It’s your shop. Mira never goes rogue.</h2>
+        <p class="lede">An AI answering as you should make you a little nervous. So Mira is built with guardrails you control.</p>
+        <ul class="control-list">
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>You approve the playbook first</b><span>Review and edit Mira’s answers to your top questions before it goes live. Nothing is improvised on price or policy.</span></div></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Money decisions stay with you</b><span>Refunds, discounts above your limit, and complaints are always handed to you — with context and a drafted reply.</span></div></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Pause it anytime, per channel</b><span>Jumping into a live chat yourself? One tap pauses Mira on that conversation. A big launch coming? Pause everywhere.</span></div></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Every reply is logged</b><span>A full transcript of everything Mira said, searchable anytime. Your data is never used to train models for other shops.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" style="padding-top:16px">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">Pricing</span>
+        <h2 style="margin:12px 0 14px">Costs less than one lost sale a week</h2>
+        <p class="lede" style="margin-bottom:24px">Start free for 14 days. Every plan includes Instagram, TikTok and WhatsApp, live inventory sync, and human handoff.</p>
+        <div class="toggle" role="group" aria-label="Billing period">
+          <button id="billMonthly" class="active">Monthly</button>
+          <button id="billYearly">Yearly <span class="save">−20%</span></button>
+        </div>
+      </div>
+      <div class="prices">
+        <div class="price-card">
+          <h3>Starter</h3>
+          <p class="for">For new shops finding their feet</p>
+          <div class="amount">$<span class="amt" data-m="29" data-y="23">29</span><small> / month</small></div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>300 conversations / month</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>1 social account + WhatsApp</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Live inventory &amp; price answers</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Payment links &amp; order creation</li>
+            <li class="off"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Comment replies &amp; spam hiding</li>
+            <li class="off"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Weekly customer insights</li>
+          </ul>
+          <a class="btn btn-ghost" href="#get-started" style="width:100%">Start free trial</a>
+        </div>
+        <div class="price-card pop">
+          <span class="pop-tag">MOST POPULAR</span>
+          <h3>Growth</h3>
+          <p class="for">For shops posting daily and selling weekly</p>
+          <div class="amount">$<span class="amt" data-m="59" data-y="47">59</span><small> / month</small></div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>1,500 conversations / month</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Instagram + TikTok + WhatsApp</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Everything in Starter</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Comment replies &amp; spam hiding</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Order tracking updates</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Weekly customer insights</li>
+          </ul>
+          <a class="btn btn-primary" href="#get-started" style="width:100%">Start free trial</a>
+        </div>
+        <div class="price-card">
+          <h3>Pro</h3>
+          <p class="for">For high-volume and multi-shop sellers</p>
+          <div class="amount">$<span class="amt" data-m="119" data-y="95">119</span><small> / month</small></div>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Unlimited conversations</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Up to 5 shops / brands</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Everything in Growth</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Custom-order &amp; booking flows</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Team seats for staff handoff</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Priority support, same day</li>
+          </ul>
+          <a class="btn btn-ghost" href="#get-started" style="width:100%">Start free trial</a>
+        </div>
+      </div>
+      <p class="center" style="color:var(--faint); font-size:14px; margin-top:22px">Prices in USD. Yearly plans billed once a year. No per-message surprise fees, ever.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="padding-top:8px">
+    <div class="wrap">
+      <span class="kicker">Sound familiar?</span>
+      <h2 style="margin:12px 0 10px; max-width:24ch">The inbox finally feels handled</h2>
+      <p style="color:var(--muted); margin:0; font-size:15px">Illustrative stories in the words of the kinds of owners Mira is built for.</p>
+      <div class="testi-grid">
+        <div class="testi">
+          <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg></span>
+          <blockquote>“A video hit 300k views on a Sunday. Old me would’ve cried. Mira answered everything, took 60+ orders, and I just got a list of what to pack on Monday.”</blockquote>
+          <div class="who"><span class="avatar" style="background:#e93d82">S</span><div><b>Sana K.</b><span>Skincare shop · Instagram + TikTok</span></div></div>
+        </div>
+        <div class="testi">
+          <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg></span>
+          <blockquote>“I was answering ‘how much, size 10?’ forty times a day from memory — and getting it wrong. Now the stock answer is always right, and I only step in for the serious buyers.”</blockquote>
+          <div class="who"><span class="avatar" style="background:#0ea5a4">J</span><div><b>Jordan M.</b><span>Sneaker resale · TikTok Shop</span></div></div>
+        </div>
+        <div class="testi">
+          <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg></span>
+          <blockquote>“Custom cake orders used to die in my DMs because I bake all morning. Mira collects date, size and flavors, checks my calendar, and I just confirm. Saturdays are booked out now.”</blockquote>
+          <div class="who"><span class="avatar" style="background:#f59e0b">A</span><div><b>Ana R.</b><span>Home bakery · Instagram</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:8px">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">Questions</span>
+        <h2 style="margin-top:12px">Before you hand over your inbox</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Will my account get flagged or banned for using an AI?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="faq-a"><p>No. Mira connects through the official Instagram, TikTok and WhatsApp business APIs — the same approved route large brands use. There’s no password sharing, no bots pretending to be you on a fake browser, and no spammy bulk messaging.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What if Mira doesn’t know an answer?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="faq-a"><p>It says so honestly, keeps the customer warm (“let me check with the owner and get right back to you”), and hands the chat to you with a summary. It never invents a price, a discount, or a delivery date. Unanswered questions show up in your weekly report so you can teach it once and it knows forever.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">I don’t have Shopify. Can I still use Mira?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="faq-a"><p>Yes. Upload a simple price list or spreadsheet, connect Etsy or WooCommerce, or just type your products in — many DM-only shops run Mira with no website at all. Stock updates take seconds in the dashboard, and Mira can also ask you to confirm stock before promising a one-off item.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Will customers know they’re talking to an AI?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="faq-a"><p>You choose. Most shops introduce Mira by name in the first reply (“Hi, I’m Mira, Sana’s assistant — I can help right away, and Sana jumps in for anything custom”). In our experience customers care far more about a fast, correct answer than about who typed it — and a real human is always one tap away.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How long does setup actually take?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="faq-a"><p>About 10 minutes for most shops: connect accounts, sync your catalog, answer six quick questions about delivery and returns, and approve Mira’s sample replies. You can run it in “draft mode” for the first days — Mira prepares replies, you tap send — until you’re confident enough to switch on auto-reply.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What happens if I want to cancel?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="faq-a"><p>Cancel in two clicks, no chat with support, no retention maze. Your accounts disconnect instantly and your conversation data is deleted within 30 days. The 14-day trial needs no card, so there’s nothing to cancel if you just want to look around.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT US -->
+  <section id="contact" style="padding-top:8px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:36px">
+        <span class="kicker">Contact us</span>
+        <h2 style="margin:12px 0 14px">Talk to the person behind Mira</h2>
+        <p class="lede">Questions about setup, pricing, or whether Mira fits your shop? Message us directly — no form, no ticket queue.</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-left">
+          <div class="contact-person">
+            <span class="contact-avatar" aria-hidden="true">KS</span>
+            <div>
+              <b>Kishor Subedi</b>
+              <span>Founder · Automation &amp; AI Agents</span>
+            </div>
+          </div>
+          <p class="contact-bio">I’ve spent the <strong>past 6 years working in automation and the AI agent industry at two of the biggest companies in the world — Google and Microsoft</strong>. At both, I built automation and AI workflow platforms that handle real customer conversations at scale. Mira brings that same experience to Instagram and TikTok shops: reliable, safe, and built so you can trust it with your customers.</p>
+
+          <div class="employer-logos" aria-label="Previously at Google and Microsoft">
+            <span class="employer">
+              <svg width="20" height="20" viewBox="0 0 23 23" aria-hidden="true"><rect x="0" y="0" width="10.5" height="10.5" fill="#f25022"/><rect x="12" y="0" width="10.5" height="10.5" fill="#7fba00"/><rect x="0" y="12" width="10.5" height="10.5" fill="#00a4ef"/><rect x="12" y="12" width="10.5" height="10.5" fill="#ffb900"/></svg>
+              <span>Microsoft<small>Automation &amp; AI</small></span>
+            </span>
+            <span class="employer">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.3h6.5a5.6 5.6 0 0 1-2.4 3.7v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.5 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.4 14.4a7.2 7.2 0 0 1 0-4.8V6.5H1.3a12 12 0 0 0 0 11l4.1-3.1z"/><path fill="#EA4335" d="M12 4.7c1.8 0 3 .8 3.7 1.4l3.3-3.2A11.9 11.9 0 0 0 12 0 12 12 0 0 0 1.3 6.5l4.1 3.1C6.3 6.8 8.9 4.7 12 4.7z"/></svg>
+              <span>Google<small>Automation &amp; AI</small></span>
+            </span>
+          </div>
+
+          <a class="contact-linkedin" href="https://www.linkedin.com/in/kishor-subedi-86787b133/" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+
+        <div class="contact-right">
+          <p class="contact-label">Message us on WhatsApp</p>
+
+          <a class="wa-card" href="https://wa.me/14086279908" target="_blank" rel="noopener noreferrer">
+            <span class="wa-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.65-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.77 9.77 0 0 1-4.99-1.37l-.36-.21-3.71.97 1-3.62-.23-.37a9.8 9.8 0 1 1 8.3 4.6zm0-21.58C5.5.21.16 5.55.16 12.11c0 2.1.55 4.14 1.59 5.95L.06 24l6.08-1.6a11.9 11.9 0 0 0 5.9 1.51h.01c6.55 0 11.89-5.34 11.89-11.9C23.94 5.55 18.6.21 12.05.21z"/></svg></span>
+            <span><b>+1 (408) 627-9908</b><span>United States · WhatsApp</span></span>
+            <span class="wa-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="wa-card" href="https://wa.me/9779716942783" target="_blank" rel="noopener noreferrer">
+            <span class="wa-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.65-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.77 9.77 0 0 1-4.99-1.37l-.36-.21-3.71.97 1-3.62-.23-.37a9.8 9.8 0 1 1 8.3 4.6zm0-21.58C5.5.21.16 5.55.16 12.11c0 2.1.55 4.14 1.59 5.95L.06 24l6.08-1.6a11.9 11.9 0 0 0 5.9 1.51h.01c6.55 0 11.89-5.34 11.89-11.9C23.94 5.55 18.6.21 12.05.21z"/></svg></span>
+            <span><b>+977 9716942783</b><span>Nepal · WhatsApp</span></span>
+            <span class="wa-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="li-card" href="https://www.linkedin.com/in/kishor-subedi-86787b133/" target="_blank" rel="noopener noreferrer">
+            <span class="li-icon" aria-hidden="true">in</span>
+            <span><b style="display:block; font-size:16.5px">Kishor Subedi on LinkedIn</b><span style="font-size:13.5px; color:var(--muted); font-weight:600">View profile &amp; work history</span></span>
+            <span class="wa-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <p class="contact-note">Tap a number to open WhatsApp straight away. We usually reply within a few hours — and yes, a real person (Kishor) reads every message.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="get-started" style="padding-top:6px">
+    <div class="wrap">
+      <div class="final">
+        <h2>Your next customer is typing right now.</h2>
+        <p>Connect your shop, approve your playbook, and let Mira answer the next “price?” in 8 seconds — while you make, pack, post and live your life.</p>
+        <a class="btn btn-lime" href="#top" style="font-size:16.5px; padding:15px 30px">Start your free 14 days</a>
+        <p class="hero-note" style="margin-top:16px">No credit card · No code · Works with the inbox you already have</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="#top" style="font-size:19px"><span class="logo-mark" style="width:30px;height:30px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M8.5 10.5h7M8.5 13.5h4"/></svg></span>Mira</a>
+      <p style="margin:10px 0 0; max-width:34ch">The AI inbox teammate for Instagram, TikTok and WhatsApp shops.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="#demo">Live demo</a>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact us</a>
+    </nav>
+  </div>
+  <div class="wrap" style="margin-top:26px; padding-top:18px; border-top:1px solid var(--line); display:flex; gap:16px; flex-wrap:wrap; justify-content:space-between">
+    <span>© 2026 Mira. Made for small shops everywhere.</span>
+    <span>Privacy · Terms</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Mobile menu */
+  var menuBtn = document.getElementById("menuBtn");
+  var mobileMenu = document.getElementById("mobileMenu");
+  menuBtn.addEventListener("click", function(){
+    var open = mobileMenu.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  mobileMenu.addEventListener("click", function(e){
+    if(e.target.tagName === "A"){ mobileMenu.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); }
+  });
+
+  /* Demo scenarios */
+  var scenarios = {
+    stock: {
+      msgs: [
+        {who:"in", text:"Hi!! Is the sage linen dress still available in medium? 🤞"},
+        {who:"out", text:"Hey! Yes — the sage linen dress is in stock in Medium, but only 2 left. It’s $58. Want me to reserve one for you for 24 hours, no payment needed yet?"},
+        {who:"in", text:"Omg yes please reserve it"},
+        {who:"out", text:"Done ✓ Reserved under your name until tomorrow 6pm. Here’s the checkout link whenever you’re ready — and no pressure if you change your mind."}
+      ],
+      meta: ["✓ Checked live stock", "✓ Reservation created", "Replied in 7 sec"]
+    },
+    price: {
+      msgs: [
+        {who:"in", text:"How much is the candle set + shipping to Chicago?"},
+        {who:"out", text:"The candle set is $34 for 3. Shipping to Chicago is $5.50 (2–4 days) — or free, since orders over $35 ship free. Add the mini candle for $6 and shipping’s on us 🙂"},
+        {who:"in", text:"Oh nice, add the mini one then"},
+        {who:"out", text:"Perfect — total is $40.00 with free shipping. I’ve sent your secure checkout link. Once paid, your order is made and poured within 2 days 🕯️"}
+      ],
+      meta: ["✓ Price from your catalog", "✓ Free-shipping rule applied", "✓ Checkout link sent"]
+    },
+    order: {
+      msgs: [
+        {who:"in", text:"Hey, where is my order? I ordered last Tuesday 😕"},
+        {who:"out", text:"Let me check right away… Found it! Order #0897 shipped Thursday and it’s out for delivery today — the courier has it arriving by 7pm. Here’s your live tracking link."},
+        {who:"in", text:"Oh amazing thank you!!"},
+        {who:"out", text:"Anytime! If it’s not there by tonight, message me here and I’ll sort it out personally."}
+      ],
+      meta: ["✓ Looked up order #0897", "✓ Live tracking shared", "No owner time spent"]
+    },
+    custom: {
+      msgs: [
+        {who:"in", text:"Can you make a custom birthday cake for this Saturday? Chocolate, for 12 people"},
+        {who:"out", text:"Happy to help! Saturday works — we have one custom slot left. Quick questions so I get it perfect: any message on the cake, and any nut allergies I should know about?"},
+        {who:"in", text:"“Happy 30th Elif!” and no nuts please"},
+        {who:"out", text:"Got it: chocolate cake for 12, “Happy 30th Elif!”, nut-free, pickup Saturday 11am — $72. I’ve sent the summary to Ana (the baker) to confirm, and I’ll message you her yes within the hour 🎂"}
+      ],
+      meta: ["✓ Asked the right follow-ups", "✓ Checked Saturday capacity", "✓ Summary sent to owner"]
+    },
+    human: {
+      msgs: [
+        {who:"in", text:"I’m honestly unhappy with my order, I want to talk to a real person"},
+        {who:"out", text:"Of course — I’m really sorry it wasn’t right. I’ve passed this straight to the owner with your order details, and they’ll reply here personally within the hour. You don’t need to re-explain anything."},
+        {who:"sys", text:"🔔 Handed to owner · Reason: unhappy customer · Mira paused on this chat · Full summary + suggested reply sent to your phone"}
+      ],
+      meta: ["✓ Emotion detected", "✓ Handed off instantly", "✓ No refund promised by AI"]
+    }
+  };
+
+  var demoChat = document.getElementById("demoChat");
+  var demoMeta = document.getElementById("demoMeta");
+  var current = "stock";
+  var timers = [];
+
+  function clearTimers(){ timers.forEach(function(t){ clearTimeout(t); }); timers = []; }
+  function bubbleEl(m){
+    if(m.who === "sys"){
+      var d = document.createElement("div");
+      d.className = "alert-card";
+      d.style.fontSize = "13.5px";
+      d.textContent = m.text;
+      return d;
+    }
+    var b = document.createElement("div");
+    b.className = "bubble " + m.who;
+    b.textContent = m.text;
+    return b;
+  }
+  function playScenario(key){
+    clearTimers();
+    current = key;
+    var data = scenarios[key];
+    demoChat.innerHTML = "";
+    demoMeta.innerHTML = "";
+    var typing = document.createElement("div");
+    typing.className = "typing";
+    typing.innerHTML = "<i></i><i></i><i></i>";
+    var delay = 0;
+    data.msgs.forEach(function(m, i){
+      if(reduceMotion){
+        demoChat.appendChild(bubbleEl(m));
+        return;
+      }
+      if(m.who === "out" || m.who === "sys"){
+        timers.push(setTimeout(function(){
+          typing.classList.add("on");
+          if(m.who === "sys"){ typing.classList.remove("on"); demoChat.appendChild(bubbleEl(m)); finishMeta(data); }
+        }, delay));
+        delay += 750;
+        timers.push(setTimeout(function(){
+          typing.classList.remove("on");
+          if(m.who !== "sys"){ demoChat.appendChild(bubbleEl(m)); }
+          if(i === data.msgs.length - 1 && m.who !== "sys"){ finishMeta(data); }
+        }, delay));
+        delay += 500;
+      } else {
+        timers.push(setTimeout(function(){ demoChat.appendChild(bubbleEl(m)); demoChat.appendChild(typing); }, delay));
+        delay += 650;
+      }
+    });
+    if(reduceMotion){ finishMeta(data); }
+  }
+  function finishMeta(data){
+    demoMeta.innerHTML = "";
+    data.meta.forEach(function(t){
+      var s = document.createElement("span");
+      s.className = "meta-pill";
+      s.textContent = t;
+      demoMeta.appendChild(s);
+    });
+  }
+  document.querySelectorAll(".scenario").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll(".scenario").forEach(function(b){ b.classList.remove("active"); b.setAttribute("aria-selected","false"); });
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected","true");
+      playScenario(btn.getAttribute("data-scenario"));
+    });
+  });
+  document.getElementById("replayBtn").addEventListener("click", function(){ playScenario(current); });
+  playScenario("stock");
+
+  /* Calculator */
+  var cMsgs = document.getElementById("calcMsgs"), cMins = document.getElementById("calcMins"), cVal = document.getElementById("calcValue");
+  function fmt(n){ return n.toLocaleString("en-US"); }
+  function calc(){
+    var msgs = parseInt(cMsgs.value, 10), mins = parseInt(cMins.value, 10), val = parseInt(cVal.value, 10);
+    document.getElementById("outMsgs").textContent = msgs;
+    document.getElementById("outMins").textContent = mins + " min";
+    document.getElementById("outValue").textContent = "$" + val;
+    var convos = msgs * 30;
+    var hours = Math.round(convos * mins / 60);
+    var sales = Math.round(convos * 0.08 * val);
+    document.getElementById("calcHours").textContent = fmt(hours);
+    document.getElementById("calcConvos").textContent = fmt(convos);
+    document.getElementById("calcSales").textContent = "$" + fmt(sales);
+  }
+  [cMsgs, cMins, cVal].forEach(function(el){ el.addEventListener("input", calc); });
+  calc();
+
+  /* Billing toggle */
+  var bM = document.getElementById("billMonthly"), bY = document.getElementById("billYearly");
+  function setBilling(yearly){
+    bM.classList.toggle("active", !yearly);
+    bY.classList.toggle("active", yearly);
+    document.querySelectorAll(".amt").forEach(function(el){
+      el.textContent = yearly ? el.getAttribute("data-y") : el.getAttribute("data-m");
+    });
+  }
+  bM.addEventListener("click", function(){ setBilling(false); });
+  bY.addEventListener("click", function(){ setBilling(true); });
+
+  /* FAQ */
+  document.querySelectorAll(".faq-item").forEach(function(item){
+    var q = item.querySelector(".faq-q");
+    q.addEventListener("click", function(){
+      var open = item.classList.toggle("open");
+      q.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+})();
+</script>
+</body>
+</html>
