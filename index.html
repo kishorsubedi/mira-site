@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="data:," />
-<title>Mira — AI replies + real-time order &amp; inventory management for Instagram &amp; TikTok shops</title>
-<meta name="description" content="Mira answers your Instagram, TikTok and WhatsApp messages in seconds and manages your orders and inventory in real time. Every answer comes from one source-of-truth doc you control — conflicts or gaps get texted to you, and your reply updates the doc forever." />
+<title>Mira — AI replies + real-time orders &amp; inventory for Instagram &amp; TikTok shops</title>
+<meta name="description" content="Mira replies to Instagram, TikTok and WhatsApp messages in seconds and manages orders and stock in real time — every answer from one source-of-truth doc you control." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -132,67 +132,28 @@ header{position:sticky; top:0; z-index:60; background:color-mix(in srgb, var(--b
 .float-card{animation:floaty 5s ease-in-out infinite}
 .fc-2{animation-delay:1.2s}.fc-3{animation-delay:2.1s}
 
-/* ---------- System infographic ---------- */
-.system{padding:54px 0 12px}
-.sys-diagram{margin-top:42px; background:var(--surface); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); padding:clamp(22px,3.4vw,38px)}
-.sys-label{display:flex; align-items:center; gap:9px; font-size:12px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--faint); margin:0 0 12px}
-.sys-label .n{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--green); color:#fff; font-size:12px; letter-spacing:0; flex:none}
-@media (prefers-color-scheme: dark){ .sys-label .n{color:#06231a} }
-.sys-channels{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
-.sys-chan{display:flex; align-items:center; gap:10px; border:1.5px solid var(--line); border-radius:14px; padding:12px 14px; background:var(--surface); font-weight:700; font-size:14.5px; line-height:1.3}
-.sys-chan .cdot{width:10px; height:10px; border-radius:50%; flex:none}
-.sys-chan small{display:block; font-weight:600; color:var(--muted); font-size:12px}
-.sys-flow{display:flex; align-items:center; gap:12px; margin:18px 0; color:var(--green); font-weight:700; font-size:13.5px; text-align:center}
-.sys-flow::before,.sys-flow::after{content:""; height:1.5px; background:var(--line2); flex:1}
-.sys-core{display:grid; grid-template-columns:1fr auto 1.15fr; gap:18px; align-items:stretch}
-.sys-agent{border:2px solid var(--green); background:var(--green-soft); border-radius:20px; padding:22px; display:flex; flex-direction:column}
-.sys-agent .sa-head{display:flex; align-items:center; gap:11px; margin-bottom:8px}
-.sys-agent h3{font-size:19px}
-.sys-agent p{margin:0; font-size:14.5px; color:var(--ink); opacity:.85}
-.sys-agent ul{list-style:none; margin:14px 0 0; padding:14px 0 0; border-top:1px solid color-mix(in srgb, var(--green) 30%, transparent); display:grid; gap:8px; font-size:13.5px; font-weight:700}
-.sys-agent ul li{display:flex; gap:8px; align-items:flex-start}
-.sys-agent ul svg{flex:none; margin-top:2px; color:var(--green)}
-.sys-swap{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; color:var(--green); min-width:86px}
-.sys-swap .swap-tag{font-size:11.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); text-align:center; max-width:12ch}
-.sys-doc{border:1.5px solid var(--line2); background:var(--surface2); border-radius:20px; padding:22px}
-.sys-doc .sd-head{display:flex; align-items:flex-start; gap:12px}
-.sys-doc h3{font-size:19px}
-.sys-doc .sd-sub{color:var(--muted); font-size:13.5px; font-weight:600; margin-top:2px}
-.sys-doc ul{list-style:none; margin:16px 0 0; padding:0; display:grid; gap:9px}
-.sys-doc ul li{display:flex; gap:9px; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:9px 12px; font-size:14px; font-weight:600}
-.sys-doc ul li svg{color:var(--green); flex:none}
-.sys-doc ul li .live-n{margin-left:auto; font-family:"DM Mono",monospace; font-size:12px; color:var(--green); font-weight:500; white-space:nowrap}
-.sys-live{margin-top:14px; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:800; color:var(--green); background:var(--green-soft); border-radius:999px; padding:6px 12px}
-.sys-live::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--green)}
-.sys-branches{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-.sys-branch{border-radius:20px; padding:22px; border:1.5px solid var(--line)}
-.sys-branch h3{font-size:17.5px; display:flex; gap:10px; align-items:center; margin-bottom:8px}
-.sys-branch p{margin:0; color:var(--muted); font-size:14.5px}
-.sys-branch p b{color:var(--ink)}
-.sys-branch .b-icon{width:32px; height:32px; border-radius:50%; display:grid; place-items:center; flex:none}
-.sys-branch.ok{border-color:var(--green); background:color-mix(in srgb, var(--green-soft) 45%, var(--surface))}
-.sys-branch.help{border-color:var(--amber); background:color-mix(in srgb, var(--amber-soft) 55%, var(--surface))}
-.sys-sms{margin-top:14px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 14px; font-size:13.5px; display:grid; gap:8px}
-.sys-sms .sms-row{display:flex; gap:9px; align-items:flex-start}
-.sys-sms .sms-tag{flex:none; font-size:11px; font-weight:800; letter-spacing:.05em; padding:3px 8px; border-radius:999px; margin-top:1px}
-.sys-loop{margin-top:16px; background:var(--green-deep); color:#eaf5ee; border-radius:20px; padding:20px 24px; display:flex; gap:16px; align-items:center}
-@media (prefers-color-scheme: dark){ .sys-loop{background:#122019; border:1px solid var(--line)} }
-.sys-loop .loop-icon{flex:none; width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,.1); display:grid; place-items:center; color:var(--lime)}
-.sys-loop b{display:block; font-size:16.5px; color:#fff; margin-bottom:2px}
-.sys-loop p{margin:0; font-size:14.5px; color:#bcd6c6}
-.sys-points{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px}
-.sys-point{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:18px 20px}
-.sys-point b{display:block; font-size:15.5px; margin-bottom:3px}
-.sys-point p{margin:0; color:var(--muted); font-size:14px}
+/* ---------- System flow diagram ---------- */
+.system{padding:56px 0 8px}
+.flow{margin-top:44px; display:flex; align-items:stretch}
+.flow-node{flex:1; min-width:0; background:var(--surface); border:1.5px solid var(--line); border-radius:18px; padding:20px 18px}
+.flow-node .fn-n{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; background:var(--surface2); border:1px solid var(--line2); color:var(--muted); font-size:12.5px; font-weight:800; margin-bottom:12px}
+.flow-node h3{font-size:16.5px; margin-bottom:5px}
+.flow-node p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
+.flow-node.doc{border-color:var(--green); background:var(--green-soft)}
+.flow-node.doc .fn-n{background:var(--green); border-color:var(--green); color:#fff}
+@media (prefers-color-scheme: dark){ .flow-node.doc .fn-n{color:#06231a} }
+.flow-node.doc p{color:var(--ink); opacity:.75}
+.flow-node.sms{border-color:var(--amber)}
+.flow-arrow{flex:none; width:36px; display:flex; align-items:center; justify-content:center; color:var(--green)}
+.flow-loop{margin-top:22px; display:flex; align-items:center; justify-content:center; gap:10px; text-align:center; color:var(--muted); font-size:14.5px; font-weight:600}
+.flow-loop svg{color:var(--green); flex:none}
+.flow-loop b{color:var(--ink)}
 @media (max-width:900px){
-  .sys-channels{grid-template-columns:1fr 1fr}
-  .sys-core{grid-template-columns:1fr}
-  .sys-swap{flex-direction:row; padding:2px 0}
-  .sys-swap svg{transform:rotate(90deg)}
-  .sys-branches,.sys-points{grid-template-columns:1fr}
-  .sys-loop{flex-direction:column; align-items:flex-start}
+  .flow{flex-direction:column}
+  .flow-arrow{width:auto; height:36px}
+  .flow-arrow svg{transform:rotate(90deg)}
+  .flow-loop{flex-direction:column; gap:6px}
 }
-@media (max-width:480px){ .sys-channels{grid-template-columns:1fr} }
 
 /* strip */
 .strip{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface); padding:22px 0}
@@ -454,99 +415,47 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
   <section class="system" id="system" style="padding-bottom:26px">
     <div class="wrap">
       <div class="center">
-        <span class="kicker">The system, in one picture</span>
-        <h2 style="margin:12px 0 14px">One doc runs your whole shop</h2>
-        <p class="lede">Mira isn’t just an AI that replies. It’s real-time order &amp; inventory management built on a single source of truth — one Word doc that every answer, every order and every stock count flows through.</p>
+        <span class="kicker">How it works</span>
+        <h2 style="margin:12px 0 12px">One doc runs your whole shop</h2>
+        <p class="lede">Every message flows through a single source-of-truth doc. That’s the whole system.</p>
       </div>
 
-      <div class="sys-diagram">
-        <p class="sys-label"><span class="n">1</span> Customers message you — on every channel</p>
-        <div class="sys-channels">
-          <div class="sys-chan"><span class="cdot" style="background:var(--pink)"></span><span>Instagram DMs<small>“Is this still in stock?”</small></span></div>
-          <div class="sys-chan"><span class="cdot" style="background:var(--ink)"></span><span>TikTok messages<small>“Price? Size 10?”</small></span></div>
-          <div class="sys-chan"><span class="cdot" style="background:#25d366"></span><span>WhatsApp<small>“Where’s my order?”</small></span></div>
-          <div class="sys-chan"><span class="cdot" style="background:var(--amber)"></span><span>Post comments<small>“How much??”</small></span></div>
+      <div class="flow" role="img" aria-label="Flow diagram: a customer message comes in, Mira checks your source-of-truth doc, replies and creates the order, or texts you by SMS if the answer is missing — and every answer and stock change is saved back into the doc.">
+        <div class="flow-node">
+          <span class="fn-n">1</span>
+          <h3>Message comes in</h3>
+          <p>Instagram, TikTok, WhatsApp or a post comment.</p>
         </div>
-
-        <div class="sys-flow" aria-hidden="true">
-          <span style="display:inline-flex; align-items:center; gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg>Every message is checked against the doc first</span>
+        <div class="flow-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div class="flow-node doc">
+          <span class="fn-n">2</span>
+          <h3>Mira checks your doc</h3>
+          <p>One source of truth: prices, live stock, delivery, policies.</p>
         </div>
-
-        <p class="sys-label"><span class="n">2</span> Mira answers from one source of truth — never from memory</p>
-        <div class="sys-core">
-          <div class="sys-agent">
-            <div class="sa-head">
-              <span class="fc-icon" style="background:var(--surface); color:var(--green)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M8.5 10.5h7M8.5 13.5h4"/></svg></span>
-              <h3>Mira — your AI agent</h3>
-            </div>
-            <p>Reads the doc before every single reply. If it isn’t in the doc, Mira doesn’t guess — it asks you (step 3).</p>
-            <ul>
-              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Two-way messaging on every channel</li>
-              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sends payment links &amp; creates orders</li>
-              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Updates stock the second an order lands</li>
-            </ul>
-          </div>
-
-          <div class="sys-swap" aria-hidden="true">
-            <span class="swap-tag">Checks first</span>
-            <svg width="46" height="30" viewBox="0 0 46 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9h29M30 3l6 6-6 6"/><path d="M39 21H10M16 15l-6 6 6 6"/></svg>
-            <span class="swap-tag">Answers from it only</span>
-          </div>
-
-          <div class="sys-doc">
-            <div class="sd-head">
-              <span class="fc-icon" style="background:var(--surface); color:var(--green); border:1px solid var(--line)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
-              <div>
-                <h3>Your source-of-truth doc</h3>
-                <p class="sd-sub" style="margin:2px 0 0">One Word doc you control — the only place Mira learns from</p>
-              </div>
-            </div>
-            <ul>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Products, prices &amp; sizes</li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Live stock counts <span class="live-n">serum · 6 left</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Delivery areas, times &amp; fees</li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Returns &amp; shop policies</li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>FAQs &amp; your tone of voice</li>
-            </ul>
-            <span class="sys-live">Live — orders &amp; stock sync back in real time</span>
-          </div>
+        <div class="flow-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div class="flow-node">
+          <span class="fn-n">3</span>
+          <h3>Replies &amp; sells</h3>
+          <p>Answers in seconds, sends the payment link, creates the order.</p>
         </div>
-
-        <div class="sys-flow" aria-hidden="true">
-          <span style="display:inline-flex; align-items:center; gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg>Then one of two things happens</span>
+        <div class="flow-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div class="flow-node sms">
+          <span class="fn-n">4</span>
+          <h3>No answer? You’re texted</h3>
+          <p>Conflict or gap in the doc — Mira sends you one SMS. You reply once.</p>
         </div>
-
-        <p class="sys-label"><span class="n">3</span> Answer found — or you’re texted, once</p>
-        <div class="sys-branches">
-          <div class="sys-branch ok">
-            <h3><span class="b-icon" style="background:var(--green-soft); color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Answer is in the doc</h3>
-            <p>Mira replies in seconds, sends the payment link and creates the order. <b>The sale and the new stock count are written straight back into the doc</b> — so the next customer always hears the truth.</p>
-          </div>
-          <div class="sys-branch help">
-            <h3><span class="b-icon" style="background:var(--amber-soft); color:#8a5b00"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"/></svg></span>Conflict — or no info in the doc</h3>
-            <p>Mira never invents an answer. It keeps the customer warm and <b>texts your private number by SMS</b>. You reply by text, once:</p>
-            <div class="sys-sms">
-              <div class="sms-row"><span class="sms-tag" style="background:var(--amber-soft); color:#8a5b00">SMS TO YOU</span><span>“Customer asks: do you ship to Canada? It’s not in the doc — what should I say?”</span></div>
-              <div class="sms-row"><span class="sms-tag" style="background:var(--green-soft); color:var(--green)">YOU REPLY</span><span>“Yes — $12 flat, 5–7 days.”</span></div>
-              <div class="sms-row"><span class="sms-tag" style="background:var(--surface2); color:var(--muted)">DOC UPDATED</span><span>Mira answers the customer and <b>saves your reply in the doc</b> — it never has to ask you again.</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sys-loop">
-          <span class="loop-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></span>
-          <div>
-            <b>The feedback loop keeps it true</b>
-            <p>Every order, every stock change and every answer you give by SMS flows back into the same doc. Your inventory is never out of date, and Mira gets more accurate every day — without you re-teaching it anything.</p>
-          </div>
+        <div class="flow-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div class="flow-node">
+          <span class="fn-n">5</span>
+          <h3>Saved back to the doc</h3>
+          <p>Your reply and every stock change are written in — in real time.</p>
         </div>
       </div>
 
-      <div class="sys-points">
-        <div class="sys-point"><b>Not just replies</b><p>Mira manages orders and inventory in real time — selling, reserving and counting stock, not just chatting.</p></div>
-        <div class="sys-point"><b>You maintain one doc</b><p>No dashboards to babysit. Keep the doc right, and every channel stays right automatically.</p></div>
-        <div class="sys-point"><b>Safe by design</b><p>No answer in the doc means no made-up answer. Mira asks you first — every time.</p></div>
-      </div>
+      <p class="flow-loop">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        <span><b>And it loops.</b> The doc stays true, so Mira never has to ask you the same thing twice.</span>
+      </p>
     </div>
   </section>
 
@@ -554,13 +463,13 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
   <div class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="kicker">AI messaging + real-time orders &amp; inventory · For Instagram &amp; TikTok shops</span>
+        <span class="kicker">For Instagram &amp; TikTok shops</span>
         <h1 style="margin-top:14px">Your DMs are full. <span class="hl">Your sales shouldn’t wait.</span></h1>
-        <p class="lede">Mira answers customer messages in seconds — prices, sizes, stock, delivery, order status — in your voice, on Instagram, TikTok and WhatsApp. And it runs your orders and inventory in real time too: every sale updates stock instantly, so it never sells what’s already sold out. You stop copy-pasting the same replies. Customers stop leaving.</p>
+        <p class="lede">Mira replies to customers in seconds, in your voice — and manages your orders and stock in real time.</p>
         <ul class="hero-points">
-          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Replies in under 10 seconds, 24/7 — even at 1am after a video goes viral</li>
-          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Knows your live inventory, so it never sells something that’s sold out</li>
-          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Sends the checkout link and creates the order — you just pack and ship</li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Replies in under 10 seconds, 24/7</li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Never sells what’s sold out — stock is always live</li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Sends the checkout link, creates the order</li>
         </ul>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#get-started">Start free — no card needed</a>
@@ -637,34 +546,34 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
     <div class="wrap pain-grid">
       <div>
         <span class="kicker">The problem</span>
-        <h2 style="margin:12px 0 14px">Every unanswered DM is a customer buying from someone else</h2>
-        <p class="lede" style="margin-bottom:30px">You didn’t start a shop to be a full-time inbox. But the questions never stop — and they’re all the same questions.</p>
+        <h2 style="margin:12px 0 14px">Every unanswered DM is a lost sale</h2>
+        <p class="lede" style="margin-bottom:30px">The questions never stop — and they’re all the same questions.</p>
         <div class="pain-list">
           <div class="pain-item">
             <span class="n">1</span>
-            <div><h3>“Price?” “Available?” “Delivery to…?” — 100 times a day</h3>
-            <p>The same five questions eat your mornings, your packing time, and your evenings with family. Copy, paste, copy, paste.</p></div>
+            <div><h3>“Price?” “Available?” — 100 times a day</h3>
+            <p>The same five questions, copy-pasted all day.</p></div>
           </div>
           <div class="pain-item">
             <span class="n">2</span>
-            <div><h3>By the time you reply, they’ve gone cold</h3>
-            <p>A customer who messaged at lunch and hears back at 9pm has already ordered from the shop that answered in a minute.</p></div>
+            <div><h3>Slow replies go cold</h3>
+            <p>Message at lunch, reply at 9pm — they’ve already bought elsewhere.</p></div>
           </div>
           <div class="pain-item">
             <span class="n">3</span>
-            <div><h3>One viral video = 400 DMs you can’t get through</h3>
-            <p>Your best marketing moment becomes your worst week. The algorithm rewards you; your inbox punishes you.</p></div>
+            <div><h3>One viral video = 400 DMs</h3>
+            <p>Your best moment becomes your worst week.</p></div>
           </div>
           <div class="pain-item">
             <span class="n">4</span>
-            <div><h3>You sell things you don’t have — or miss what you do</h3>
-            <p>Answering from memory means promising sold-out stock, refunding angry customers, and losing the sale either way.</p></div>
+            <div><h3>Selling from memory goes wrong</h3>
+            <p>Sold-out items get promised. Refunds and angry comments follow.</p></div>
           </div>
         </div>
       </div>
       <div class="unread" aria-label="Illustration of an overwhelmed inbox">
-        <h3>A Tuesday in your inbox, right now</h3>
-        <p>Unread, stacking up while you’re at the post office.</p>
+        <h3>A Tuesday in your inbox</h3>
+        <p>Stacking up while you’re at the post office.</p>
         <div class="unread-row"><span class="avatar" style="background:#7c5cd6">M</span><div class="msg"><b>maya.wears</b><span>is the blue dress available in S??</span></div><span class="when">9:14 AM</span><span class="badge">3</span></div>
         <div class="unread-row"><span class="avatar" style="background:#0ea5a4">J</span><div class="msg"><b>jordan.kicks</b><span>yo how much for the Jordan 4s size 10</span></div><span class="when">10:02 AM</span><span class="badge">2</span></div>
         <div class="unread-row"><span class="avatar" style="background:#e93d82">A</span><div class="msg"><b>ana.bakes</b><span>can I order a cake for Saturday?? need it by—</span></div><span class="when">11:47 AM</span><span class="badge">5</span></div>
@@ -680,8 +589,8 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
     <div class="wrap demo-grid">
       <div>
         <span class="kicker">Try it</span>
-        <h2 style="margin:12px 0 14px">Watch Mira handle the questions you’re tired of typing</h2>
-        <p class="lede">Pick a real customer question. This is exactly how Mira answers — using your catalog, your prices and your policies.</p>
+        <h2 style="margin:12px 0 14px">Watch Mira answer</h2>
+        <p class="lede">Pick a question. Mira answers from your prices, stock and policies.</p>
         <div class="scenarios" role="tablist" aria-label="Demo scenarios">
           <button class="scenario active" data-scenario="stock" role="tab" aria-selected="true"><span class="q">“Is this still available in my size?”</span><span class="tag">STOCK</span></button>
           <button class="scenario" data-scenario="price" role="tab" aria-selected="false"><span class="q">“How much + shipping to my city?”</span><span class="tag">PRICE</span></button>
@@ -706,27 +615,27 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
   <!-- HOW -->
   <section id="how">
     <div class="wrap">
-      <span class="kicker">How it works</span>
-      <h2 style="margin:12px 0 14px; max-width:20ch">Live before your next post goes up</h2>
-      <p class="lede">No code, no new app for your customers. Mira works inside the inboxes you already use.</p>
+      <span class="kicker">Set up</span>
+      <h2 style="margin:12px 0 14px; max-width:20ch">Live in about 10 minutes</h2>
+      <p class="lede">No code. Mira works inside the inboxes you already use.</p>
       <div class="steps">
         <div class="step">
           <span class="step-n">STEP 01</span>
           <h3>Connect your accounts</h3>
-          <p>Link Instagram, TikTok and WhatsApp in a few clicks with official sign-in. Nothing changes for your followers — they just get answered faster.</p>
+          <p>Link Instagram, TikTok and WhatsApp with official sign-in.</p>
           <div class="mini"><span>Instagram</span><span>TikTok</span><span>WhatsApp</span></div>
         </div>
         <div class="step">
           <span class="step-n">STEP 02</span>
-          <h3>Teach it your shop — once, in one doc</h3>
-          <p>Everything Mira knows lives in your source-of-truth doc: products, prices, delivery areas, return policy and how you like to talk. Connect Shopify or start from the doc alone — either way, orders and stock changes sync back into it in real time, so it never goes stale.</p>
-          <div class="mini"><span>Source-of-truth doc</span><span>Prices</span><span>Policies</span><span>Your tone</span></div>
+          <h3>Fill in one doc</h3>
+          <p>Products, prices, delivery, returns, your tone. That’s all Mira learns from.</p>
+          <div class="mini"><span>Prices</span><span>Stock</span><span>Policies</span></div>
         </div>
         <div class="step">
           <span class="step-n">STEP 03</span>
-          <h3>It replies, sells, and taps you in when needed</h3>
-          <p>Mira answers instantly, sends payment links, creates orders and updates customers on delivery. Anything sensitive — refunds, complaints, big custom jobs — lands in your phone with a summary, ready for you.</p>
-          <div class="mini"><span>Payment links</span><span>Orders</span><span>Smart handoff</span></div>
+          <h3>Mira takes it from there</h3>
+          <p>It replies, sells and updates stock. Sensitive cases come to you, with a summary.</p>
+          <div class="mini"><span>Payment links</span><span>Orders</span><span>Handoff</span></div>
         </div>
       </div>
     </div>
@@ -736,15 +645,15 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
   <section id="features" style="padding-top:10px">
     <div class="wrap">
       <div class="center">
-        <span class="kicker">What Mira does</span>
-        <h2 style="margin:12px 0 14px">Built for how social shops actually sell</h2>
-        <p class="lede">Not a generic chatbot. Mira answers messages <em>and</em> runs your orders and inventory in real time — trained on the daily reality of DM selling.</p>
+        <span class="kicker">Features</span>
+        <h2 style="margin:12px 0 14px">Built for how social shops sell</h2>
+        <p class="lede">Not a generic chatbot — replies, orders and inventory in one place.</p>
       </div>
       <div class="feat-grid">
         <div class="feat f-wide">
           <span class="f-icon" style="background:var(--green-soft); color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
-          <h3>Real-time inventory management — answers from live stock, not memory</h3>
-          <p>Mira checks real stock before it promises anything. Sold out in Large? It offers the Medium, the waitlist, or the closest match — instead of a refund and an angry comment later.</p>
+          <h3>Live inventory, not memory</h3>
+          <p>Mira checks real stock before promising anything. Sold out? It offers the next size or the waitlist.</p>
           <div class="stock-rows">
             <div class="stock-row">Linen Dress — Blue, S <span class="st st-in">12 in stock</span></div>
             <div class="stock-row">Linen Dress — Blue, M <span class="st st-low">Only 2 left</span></div>
@@ -753,36 +662,36 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
         </div>
         <div class="feat f-narrow">
           <span class="f-icon" style="background:var(--coral-soft); color:var(--coral)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 10h-6.5L13 2z"/></svg></span>
-          <h3>Replies in seconds, at 2pm or 2am</h3>
-          <p>The first shop to answer usually gets the sale. Mira answers every first message in under 10 seconds — nights, weekends, and mid–viral spike included.</p>
+          <h3>Replies in seconds</h3>
+          <p>Every first message answered in under 10 seconds — nights, weekends, viral spikes.</p>
         </div>
         <div class="feat f-third">
           <span class="f-icon" style="background:var(--amber-soft); color:#8a5b00"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
-          <h3>Real-time order management — takes the order, sends the payment link</h3>
-          <p>No more “send screenshot after payment.” Mira confirms size, address and total, sends a secure checkout link, creates the order when it’s paid, counts the stock down instantly, and keeps the customer updated until it’s delivered.</p>
+          <h3>Orders, handled end to end</h3>
+          <p>Confirms the order, sends a secure payment link, counts stock down, sends tracking.</p>
         </div>
         <div class="feat f-third">
           <span class="f-icon" style="background:var(--green-soft); color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span>
-          <h3>Speaks your customers’ language</h3>
-          <p>English, Spanish, Nepali, Hindi and 30+ more — Mira replies in the language the customer wrote in, slang and all, without you hiring anyone.</p>
+          <h3>30+ languages</h3>
+          <p>English, Spanish, Nepali, Hindi and more — Mira replies in the customer’s language.</p>
         </div>
         <div class="feat f-third">
           <span class="f-icon" style="background:var(--surface2); color:var(--ink)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
-          <h3>Sounds like you, not a robot</h3>
-          <p>Set your tone once — friendly, formal, playful, emoji or no emoji — and review example replies before Mira ever goes live.</p>
+          <h3>Sounds like you</h3>
+          <p>Set your tone once. You approve sample replies before Mira goes live.</p>
           <div class="tone-rows">
             <div class="bubble out" style="justify-self:stretch">heyy! yes we’ve got it in black too 🖤 want me to hold one till Friday?</div>
           </div>
         </div>
         <div class="feat f-wide">
           <span class="f-icon" style="background:var(--surface2); color:var(--ink)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-          <h3>Handles comments too — and hides the spam</h3>
-          <p>“Price??” under a post gets a public reply and a DM with the details, turning browsers into buyers. Spam, scams and abusive comments are quietly hidden so your page stays clean.</p>
+          <h3>Comments covered too</h3>
+          <p>“Price??” under a post gets a reply and a DM. Spam and scams are quietly hidden.</p>
         </div>
         <div class="feat f-narrow">
           <span class="f-icon" style="background:var(--green-soft); color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>
-          <h3>See what customers actually ask</h3>
-          <p>A weekly summary shows your most-asked products, the questions Mira couldn’t answer, and the stock people wanted but you didn’t have — so your next restock is obvious.</p>
+          <h3>Weekly insights</h3>
+          <p>Your most-asked products and missed questions — so the next restock is obvious.</p>
         </div>
       </div>
     </div>
@@ -794,8 +703,8 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
       <div class="calc">
         <div>
           <span class="kicker" style="color:var(--lime)">Do the math</span>
-          <h2 style="margin:12px 0 12px">What is a slow inbox costing you?</h2>
-          <p class="lede">Drag the sliders to match your shop. Most owners are surprised by the hours — and the orders — hiding in their DMs.</p>
+          <h2 style="margin:12px 0 12px">What’s a slow inbox costing you?</h2>
+          <p class="lede">Drag the sliders to match your shop.</p>
           <label for="calcMsgs">Customer messages per day <output id="outMsgs">60</output></label>
           <input type="range" id="calcMsgs" min="10" max="400" step="10" value="60" />
           <label for="calcMins">Minutes you spend per conversation <output id="outMins">4 min</output></label>
@@ -805,14 +714,14 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
         </div>
         <div class="calc-out" aria-live="polite">
           <div class="big"><span id="calcHours">120</span> hours <small>back every month</small></div>
-          <p style="color:#bcd6c6; margin:10px 0 0; font-size:15px">That’s time currently spent typing the same answers — time Mira gives you back for products, content and actual life.</p>
+          <p style="color:#bcd6c6; margin:10px 0 0; font-size:15px">Time you now spend typing the same answers.</p>
           <div class="calc-stats">
             <div class="calc-stat"><b id="calcConvos">1,800</b><span>conversations handled / month</span></div>
             <div class="calc-stat"><b id="calcSales">$0</b><span>est. recovered sales / month*</span></div>
             <div class="calc-stat"><b>&lt; 10 sec</b><span>first reply, day or night</span></div>
             <div class="calc-stat"><b>24 / 7</b><span>coverage, no days off</span></div>
           </div>
-          <p class="calc-note">*Estimate only: assumes 8% of conversations that would have gone cold instead buy at your average order value when answered instantly. Your results will vary — that’s what the free trial is for.</p>
+          <p class="calc-note">*Estimate: 8% of conversations that would go cold instead buy when answered instantly.</p>
         </div>
       </div>
     </div>
@@ -835,13 +744,13 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
       </div>
       <div>
         <span class="kicker">Trust &amp; control</span>
-        <h2 style="margin:12px 0 14px">It’s your shop. Mira never goes rogue.</h2>
-        <p class="lede">An AI answering as you should make you a little nervous. So Mira is built with guardrails you control.</p>
+        <h2 style="margin:12px 0 14px">Your shop. Your rules.</h2>
+        <p class="lede">Mira only says what your doc allows.</p>
         <ul class="control-list">
-          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>You approve the playbook first</b><span>Review and edit Mira’s answers to your top questions before it goes live. Nothing is improvised on price or policy.</span></div></li>
-          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Money decisions stay with you</b><span>Refunds, discounts above your limit, and complaints are always handed to you — with context and a drafted reply.</span></div></li>
-          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Pause it anytime, per channel</b><span>Jumping into a live chat yourself? One tap pauses Mira on that conversation. A big launch coming? Pause everywhere.</span></div></li>
-          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Every reply is logged</b><span>A full transcript of everything Mira said, searchable anytime. Your data is never used to train models for other shops.</span></div></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>You approve first</b><span>Review Mira’s answers before it goes live. Nothing improvised on price or policy.</span></div></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Money decisions stay with you</b><span>Refunds, big discounts and complaints always come to you — with a drafted reply.</span></div></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Pause anytime</b><span>One tap pauses Mira on a chat, a channel, or everywhere.</span></div></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Every reply is logged</b><span>Full transcripts, searchable anytime. Your data never trains other shops’ models.</span></div></li>
         </ul>
       </div>
     </div>
@@ -852,8 +761,8 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
     <div class="wrap">
       <div class="center">
         <span class="kicker">Pricing</span>
-        <h2 style="margin:12px 0 14px">Costs less than one lost sale a week</h2>
-        <p class="lede" style="margin-bottom:24px">Start free for 14 days. Every plan includes Instagram, TikTok and WhatsApp, live inventory sync, and human handoff.</p>
+        <h2 style="margin:12px 0 14px">Less than one lost sale a week</h2>
+        <p class="lede" style="margin-bottom:24px">Free for 14 days. Every plan: all channels, live stock sync, human handoff.</p>
         <div class="toggle" role="group" aria-label="Billing period">
           <button id="billMonthly" class="active">Monthly</button>
           <button id="billYearly">Yearly <span class="save">−20%</span></button>
@@ -913,21 +822,20 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
     <div class="wrap">
       <span class="kicker">Sound familiar?</span>
       <h2 style="margin:12px 0 10px; max-width:24ch">The inbox finally feels handled</h2>
-      <p style="color:var(--muted); margin:0; font-size:15px">Illustrative stories in the words of the kinds of owners Mira is built for.</p>
       <div class="testi-grid">
         <div class="testi">
           <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg></span>
-          <blockquote>“A video hit 300k views on a Sunday. Old me would’ve cried. Mira answered everything, took 60+ orders, and I just got a list of what to pack on Monday.”</blockquote>
+          <blockquote>“A video hit 300k views on a Sunday. Mira answered everything, took 60+ orders, and I just packed on Monday.”</blockquote>
           <div class="who"><span class="avatar" style="background:#e93d82">S</span><div><b>Sana K.</b><span>Skincare shop · Instagram + TikTok</span></div></div>
         </div>
         <div class="testi">
           <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg></span>
-          <blockquote>“I was answering ‘how much, size 10?’ forty times a day from memory — and getting it wrong. Now the stock answer is always right, and I only step in for the serious buyers.”</blockquote>
+          <blockquote>“I answered ‘how much, size 10?’ forty times a day — from memory, often wrong. Now stock answers are always right.”</blockquote>
           <div class="who"><span class="avatar" style="background:#0ea5a4">J</span><div><b>Jordan M.</b><span>Sneaker resale · TikTok Shop</span></div></div>
         </div>
         <div class="testi">
           <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></svg></span>
-          <blockquote>“Custom cake orders used to die in my DMs because I bake all morning. Mira collects date, size and flavors, checks my calendar, and I just confirm. Saturdays are booked out now.”</blockquote>
+          <blockquote>“Mira collects date, size and flavors for custom cakes and checks my calendar. I just confirm. Saturdays are booked out.”</blockquote>
           <div class="who"><span class="avatar" style="background:#f59e0b">A</span><div><b>Ana R.</b><span>Home bakery · Instagram</span></div></div>
         </div>
       </div>
@@ -944,27 +852,27 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
       <div class="faq">
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Will my account get flagged or banned for using an AI?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-          <div class="faq-a"><p>No. Mira connects through the official Instagram, TikTok and WhatsApp business APIs — the same approved route large brands use. There’s no password sharing, no bots pretending to be you on a fake browser, and no spammy bulk messaging.</p></div>
+          <div class="faq-a"><p>No. Mira uses the official Instagram, TikTok and WhatsApp business APIs. No password sharing, no fake browsers, no bulk spam.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">What if Mira doesn’t know an answer?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-          <div class="faq-a"><p>It never guesses. If the answer isn’t in your source-of-truth doc — or your information conflicts — Mira keeps the customer warm (“let me check with the owner and get right back to you”) and texts your private number by SMS. You reply by text, Mira answers the customer, and your reply is written into the doc — so the same question is never asked of you twice. Refunds, discounts and complaints are always handed to you directly, with a summary and a drafted reply.</p></div>
+          <div class="faq-a"><p>It never guesses. If the answer isn’t in your doc, Mira texts you by SMS. You reply once, Mira answers the customer, and your reply is saved in the doc — so you’re never asked twice. Refunds and complaints come straight to you.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">I don’t have Shopify. Can I still use Mira?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-          <div class="faq-a"><p>Yes. Upload a simple price list or spreadsheet, connect Etsy or WooCommerce, or just type your products in — many DM-only shops run Mira with no website at all. Stock updates take seconds in the dashboard, and Mira can also ask you to confirm stock before promising a one-off item.</p></div>
+          <div class="faq-a"><p>Yes. Many DM-only shops run Mira with no website at all — just the doc. Etsy and WooCommerce connect too.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Will customers know they’re talking to an AI?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-          <div class="faq-a"><p>You choose. Most shops introduce Mira by name in the first reply (“Hi, I’m Mira, Sana’s assistant — I can help right away, and Sana jumps in for anything custom”). In our experience customers care far more about a fast, correct answer than about who typed it — and a real human is always one tap away.</p></div>
+          <div class="faq-a"><p>You choose. Most shops introduce Mira by name in the first reply. Customers care about a fast, correct answer — and a human is always one tap away.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">How long does setup actually take?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-          <div class="faq-a"><p>About 10 minutes for most shops: connect accounts, sync your catalog, answer six quick questions about delivery and returns, and approve Mira’s sample replies. You can run it in “draft mode” for the first days — Mira prepares replies, you tap send — until you’re confident enough to switch on auto-reply.</p></div>
+          <div class="faq-a"><p>About 10 minutes: connect accounts, fill in the doc, approve sample replies. You can start in draft mode — Mira writes, you tap send — until you’re ready for auto-reply.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">What happens if I want to cancel?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-          <div class="faq-a"><p>Cancel in two clicks, no chat with support, no retention maze. Your accounts disconnect instantly and your conversation data is deleted within 30 days. The 14-day trial needs no card, so there’s nothing to cancel if you just want to look around.</p></div>
+          <div class="faq-a"><p>Two clicks, no support chat. Accounts disconnect instantly; your data is deleted within 30 days.</p></div>
         </div>
       </div>
     </div>
@@ -976,7 +884,7 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
       <div class="center" style="margin-bottom:36px">
         <span class="kicker">Contact us</span>
         <h2 style="margin:12px 0 14px">Talk to the person behind Mira</h2>
-        <p class="lede">Questions about setup, pricing, or whether Mira fits your shop? Message us directly — no form, no ticket queue.</p>
+        <p class="lede">Message us directly — no form, no ticket queue.</p>
       </div>
 
       <div class="contact-card">
@@ -993,7 +901,7 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
               </ul>
             </div>
           </div>
-          <p class="contact-bio">I’ve spent the <strong>past 6 years working in automation and the AI agent industry at two of the biggest companies in the world — Google and Microsoft</strong>. As a Product Manager at Microsoft, I worked on <strong>Microsoft’s agent and automation products like Power Automate and Copilot Studio</strong> — the platforms businesses use to automate workflows and build AI agents at scale. Mira brings that same experience to Instagram and TikTok shops: reliable, safe, and built so you can trust it with your customers.</p>
+          <p class="contact-bio"><strong>6 years in automation and AI agents at Google and Microsoft.</strong> As a Product Manager at Microsoft, I worked on <strong>agent and automation products like Power Automate and Copilot Studio</strong>. Mira brings that experience to Instagram and TikTok shops.</p>
 
           <div class="employer-logos" aria-label="Previously at Google and Microsoft">
             <span class="employer">
@@ -1033,7 +941,7 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
             <span class="wa-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <p class="contact-note">Tap a number to open WhatsApp straight away. We usually reply within a few hours — and yes, a real person (Kishor) reads every message.</p>
+          <p class="contact-note">Tap a number to open WhatsApp. A real person — Kishor — reads every message.</p>
         </div>
       </div>
     </div>
@@ -1044,7 +952,7 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
     <div class="wrap">
       <div class="final">
         <h2>Your next customer is typing right now.</h2>
-        <p>Connect your shop, approve your playbook, and let Mira answer the next “price?” in 8 seconds — while you make, pack, post and live your life.</p>
+        <p>Let Mira answer the next “price?” in 8 seconds — while you make, pack and post.</p>
         <a class="btn btn-lime" href="#top" style="font-size:16.5px; padding:15px 30px">Start your free 14 days</a>
         <p class="hero-note" style="margin-top:16px">No credit card · No code · Works with the inbox you already have</p>
       </div>
@@ -1057,7 +965,7 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
   <div class="wrap foot">
     <div>
       <a class="logo" href="#top" style="font-size:19px"><span class="logo-mark" style="width:30px;height:30px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M8.5 10.5h7M8.5 13.5h4"/></svg></span>Mira</a>
-      <p style="margin:10px 0 0; max-width:34ch">AI messaging plus real-time order &amp; inventory management for Instagram, TikTok and WhatsApp shops.</p>
+      <p style="margin:10px 0 0; max-width:34ch">AI replies + real-time orders &amp; inventory for social shops.</p>
     </div>
     <nav aria-label="Footer">
       <a href="#demo">Live demo</a>
