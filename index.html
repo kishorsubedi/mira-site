@@ -249,6 +249,29 @@ header{position:sticky; top:0; z-index:60; background:color-mix(in srgb, var(--b
 .step p{margin:0; color:var(--muted); font-size:15px}
 .step .mini{margin-top:16px; display:flex; gap:6px; flex-wrap:wrap}
 .step .mini span{font-size:12.5px; font-weight:700; border:1px solid var(--line); border-radius:999px; padding:4px 10px; color:var(--muted)}
+.setup-prep{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:22px; font-size:14.5px; font-weight:600; color:var(--muted)}
+.setup-prep b{color:var(--ink)}
+.setup-prep .prep-pill{display:inline-flex; align-items:center; gap:7px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:7px 13px; font-size:13.5px; font-weight:700; color:var(--ink)}
+.phases{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:28px; position:relative}
+.phase{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:28px; display:flex; flex-direction:column; position:relative}
+.phase.featured{border:1.5px solid var(--green); box-shadow:var(--shadow-sm)}
+.phase .phase-n{font-family:"DM Mono",monospace; font-size:12.5px; font-weight:500; letter-spacing:.04em; color:var(--green); background:var(--green-soft); display:inline-block; padding:5px 11px; border-radius:999px; margin-bottom:14px; align-self:flex-start}
+.phase h3{font-size:21px; margin-bottom:4px}
+.phase .phase-sub{font-size:13px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--faint); margin:0 0 12px}
+.phase p{margin:0; color:var(--muted); font-size:15px}
+.phase ul{list-style:none; margin:16px 0 0; padding:0; display:grid; gap:9px; font-size:14.5px}
+.phase ul li{position:relative; padding-left:29px}
+.phase ul li::before{content:"✓"; position:absolute; left:0; top:1px; width:20px; height:20px; border-radius:50%; background:var(--green-soft); color:var(--green); display:grid; place-items:center; font-size:11px; font-weight:800}
+.phase .phase-meter{margin-top:18px; background:var(--surface2); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:13px; font-weight:700}
+.phase .phase-meter .bar{height:8px; border-radius:99px; background:var(--line); overflow:hidden; margin-top:8px}
+.phase .phase-meter .bar i{display:block; height:100%; background:var(--green); border-radius:99px}
+.phase .phase-safe{margin-top:auto; padding-top:18px; font-size:13.5px; font-weight:800; color:var(--green)}
+.trust-bar{margin-top:20px; background:var(--green-soft); border:1px solid var(--green); border-radius:16px; padding:18px 22px; display:flex; gap:14px; align-items:flex-start}
+.trust-bar .tb-icon{flex:none; width:38px; height:38px; border-radius:50%; background:var(--green); color:#fff; display:grid; place-items:center}
+@media (prefers-color-scheme: dark){ .trust-bar .tb-icon{color:#06231a} }
+.trust-bar b{display:block; font-size:16px}
+.trust-bar p{margin:2px 0 0; color:var(--muted); font-size:14.5px}
+@media (max-width:900px){ .phases{grid-template-columns:1fr} }
 
 /* Control */
 .control-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
@@ -653,16 +676,69 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
     </div>
   </section>
 
-  <!-- HOW -->
+  <!-- HOW / SETUP — 3-PHASE ROLLOUT -->
   <section id="how">
     <div class="wrap">
-      <span class="kicker">Set up</span>
-      <h2 style="margin:12px 0 14px; max-width:20ch">Live in about 10 minutes</h2>
-      <p class="lede">No code. Mira AI works inside the inboxes you already use.</p>
-      <div class="steps">
-        <div class="step"><span class="step-n">STEP 01</span><h3>Connect your accounts</h3><p>Link Instagram, WhatsApp and TikTok with official sign-in.</p><div class="mini"><span>Instagram</span><span>WhatsApp</span><span>TikTok</span></div></div>
-        <div class="step"><span class="step-n">STEP 02</span><h3>Fill your 3 docs</h3><p>Inventory, FAQ / policies, and customisation sheet — we help you set them up.</p><div class="mini"><span>Stock &amp; price</span><span>Policies</span><span>Customisation</span></div></div>
-        <div class="step"><span class="step-n">STEP 03</span><h3>Mira AI takes it from there</h3><p>It replies, sells and updates stock. Sensitive cases come to you, with a summary.</p><div class="mini"><span>COD / eSewa</span><span>Orders</span><span>Handoff</span></div></div>
+      <span class="kicker">Set up — safely, step by step</span>
+      <h2 style="margin:12px 0 14px; max-width:24ch">We don’t switch Mira AI on all at once. We earn your trust first.</h2>
+      <p class="lede">No code, no big launch day, no surprises. First we connect your accounts and fill your 3 docs together — then Mira AI goes live in 3 safe phases. You approve every step before we move to the next one.</p>
+      <div class="setup-prep" aria-label="Before the phases">
+        <b>Before Phase 1:</b>
+        <span class="prep-pill">1 · Connect Instagram, WhatsApp &amp; TikTok</span>
+        <span class="prep-pill">2 · Fill your 3 docs together</span>
+        <span>About 10 minutes. Then the phases begin ↓</span>
+      </div>
+
+      <div class="phases">
+        <article class="phase">
+          <span class="phase-n">PHASE 1 · SANDBOX</span>
+          <h3>Test only</h3>
+          <p class="phase-sub">No real customers</p>
+          <p>We play the customer. You watch Mira AI answer — safely, in private.</p>
+          <ul>
+            <li>We message your shop like a real customer — “price kati ho?”, “size M cha?”</li>
+            <li>Mira AI replies <strong>only to our test account</strong></li>
+            <li>You read every reply and we fix the docs until you’re happy</li>
+          </ul>
+          <div class="phase-meter" aria-hidden="true">Who Mira AI can reply to<div class="bar"><i style="width:8%"></i></div><span style="color:var(--muted); font-weight:600">Test account only · 0 real customers</span></div>
+          <p class="phase-safe">✓ Zero risk — no real customer is touched</p>
+        </article>
+
+        <article class="phase featured">
+          <span class="phase-n">PHASE 2 · LIMITED LIVE</span>
+          <h3>Real customers, with a limit</h3>
+          <p class="phase-sub">You set the daily cap</p>
+          <p>Mira AI starts replying to real customers — but only up to a number you choose.</p>
+          <ul>
+            <li>You set the limit — for example, <strong>10 customers a day</strong></li>
+            <li>Hit the limit? Mira AI stops. The rest stay for you, as usual</li>
+            <li>Raise, lower or pause the limit anytime</li>
+          </ul>
+          <div class="phase-meter" aria-hidden="true">Example day · 7 of 10 replies used<div class="bar"><i style="width:70%"></i></div><span style="color:var(--muted); font-weight:600">You control the cap — change it anytime</span></div>
+          <p class="phase-safe">✓ Real sales, small and controlled</p>
+        </article>
+
+        <article class="phase">
+          <span class="phase-n">PHASE 3 · FULL DEPLOY</span>
+          <h3>Fully live</h3>
+          <p class="phase-sub">No limit · No restrictions</p>
+          <p>When you’re confident, we remove the cap. Mira AI replies to everyone.</p>
+          <ul>
+            <li>No daily limit — every customer, every message</li>
+            <li>24/7 on Instagram, WhatsApp &amp; TikTok</li>
+            <li>Your docs, your rules — refunds &amp; complaints still come to you</li>
+          </ul>
+          <div class="phase-meter" aria-hidden="true">Who Mira AI can reply to<div class="bar"><i style="width:100%"></i></div><span style="color:var(--muted); font-weight:600">Unlimited · Pause anytime with one tap</span></div>
+          <p class="phase-safe">✓ Full speed — with pause &amp; handoff always on</p>
+        </article>
+      </div>
+
+      <div class="trust-bar">
+        <span class="tb-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div>
+          <b>You say when we move up a phase.</b>
+          <p>We never move you from test → limited → fully live without your okay. Not ready? Stay on the phase you’re on, as long as you like.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -743,7 +819,8 @@ footer{padding:44px 0 54px; color:var(--muted); font-size:14px}
         <div class="faq-item"><button class="faq-q" aria-expanded="false">What if Mira AI doesn’t know an answer?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><p>It never guesses. If the answer isn’t in your 3 docs, Mira AI texts you by SMS. You reply once, Mira AI answers the customer, and your reply is saved in the doc — so you’re never asked twice.</p></div></div>
         <div class="faq-item"><button class="faq-q" aria-expanded="false">I sell only from Instagram / TikTok. No website. Can I use Mira AI?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><p>Yes — that’s exactly who Mira AI is for. Most Nepali shops on Mira AI have no website at all, just Instagram, WhatsApp and TikTok plus the 3 docs.</p></div></div>
         <div class="faq-item"><button class="faq-q" aria-expanded="false">My customers write in mixed Nepali + English. Will Mira AI understand?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><p>Yes. “Price kati ho?”, “size cha?”, “delivery huncha?” — Mira AI understands Roman Nepali, Devanagari and English, and replies in the same style as the customer.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does setup take?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><p>About 10 minutes to connect accounts, plus time with us to fill your inventory, FAQ and customisation docs properly. You can start in draft mode — Mira AI writes, you tap send — until you’re ready for auto-reply.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Will Mira AI talk to my real customers straight away?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><p>No. Phase 1 is test only — we mimic a customer and Mira AI replies only to our test account. Real customers come in Phase 2, and only up to a daily limit you set. Full, unlimited replies are Phase 3 — only when you say you’re ready.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does setup take?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><p>About 10 minutes to connect accounts, plus time with us to fill your inventory, FAQ and customisation docs properly. Then we go live in 3 phases: Phase 1 Sandbox — Mira AI replies only to our test account, no real customers. Phase 2 Limited Live — real customers, up to a daily limit you set. Phase 3 Full Deploy — no limit. You approve each phase before we move up.</p></div></div>
         <div class="faq-item"><button class="faq-q" aria-expanded="false">How much does it cost?<span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><p>Contact us for pricing and onboarding info — message us on WhatsApp below and we’ll price it for your shop size and DM volume.</p></div></div>
       </div>
     </div>
